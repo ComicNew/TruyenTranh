@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="icons">
+        <item>@drawable/outline_dehaze_black_36dp</item>
+        <item>@drawable/icon_day</item>
+        <item>@drawable/icon__week</item>
+        <item>@drawable/icon_month</item>
+    </array>
+    <array name="colors">
+        <item>@android:color/white</item>
+        <item>@android:color/holo_green_dark</item>
+        <item>@android:color/holo_red_light</item>
+        <item>@android:color/holo_purple</item>
+    </array>
+</resources>

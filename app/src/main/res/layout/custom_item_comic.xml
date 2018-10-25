@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:layout_margin="4dp"
+    android:layout_height="230dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/imgThumb"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/bgtest" />
+
+        <TextView
+            android:id="@+id/tvChapter"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/border_chapter"
+            android:textColor="#fff"
+            android:textSize="10sp"
+            android:padding="8sp"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chapter 7" />
+        <ImageButton
+            android:id="@+id/btn_Like"
+            android:src="@drawable/favorite"
+            android:layout_above="@id/tv_View"
+            android:background="@drawable/like_click"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_View"
+            android:text="xx"
+            android:padding="8dp"
+            android:textSize="10sp"
+            android:drawableLeft="@drawable/eye"
+            android:drawablePadding="8dp"
+            android:textColor="#FFF"
+            android:layout_alignParentBottom="true"
+            android:background="@color/editext"
+            android:layout_width="170dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:textSize="12sp"
+        android:textColor="#000"
+        android:paddingTop="3dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="tên truyện xxxxxxxxxxxxx" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

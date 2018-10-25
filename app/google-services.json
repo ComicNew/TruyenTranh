@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "257641159482",
+    "firebase_url": "https://truyentranh2019.firebaseio.com",
+    "project_id": "truyentranh2019",
+    "storage_bucket": "truyentranh2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257641159482:android:6ed6837fd5932e45",
+        "android_client_info": {
+          "package_name": "com.skyreds.truyentranh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257641159482-81046rvrohnd3a67c7n31luhijeoh6vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skyreds.truyentranh",
+            "certificate_hash": "942e0874cf084771d94e6bbc5bc3bdafe2bf5a50"
+          }
+        },
+        {
+          "client_id": "257641159482-u95bl12pr7otdq0uuhphio3be93luiqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ5U1umLCT9SMUTt6Y3IGbGHZwvXh7MzI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257641159482-u95bl12pr7otdq0uuhphio3be93luiqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
