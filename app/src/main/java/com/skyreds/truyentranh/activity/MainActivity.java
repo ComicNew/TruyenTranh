@@ -211,6 +211,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         mSliderBanner.setMustAnimateIndicators(true);
                         mSliderBanner.setLoopSlides(true);
 
+                        rv_NewUpdate.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstNewUpdate);
+                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                                rv_NewUpdate.setLayoutManager(horizontalLayout);
+                                rv_NewUpdate.setHasFixedSize(true);
+                                rv_NewUpdate.setItemAnimator(new DefaultItemAnimator());
+                                rv_NewUpdate.setAdapter(newUpdateAdapter);
+                                rv_NewUpdate.hideShimmerAdapter();
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -223,18 +235,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
 
-                rv_NewUpdate.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        newUpdateAdapter = new ComicAdapter(MainActivity.this, lstNewUpdate);
-                        LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        rv_NewUpdate.setLayoutManager(horizontalLayout);
-                        rv_NewUpdate.setHasFixedSize(true);
-                        rv_NewUpdate.setItemAnimator(new DefaultItemAnimator());
-                        rv_NewUpdate.setAdapter(newUpdateAdapter);
-                        rv_NewUpdate.hideShimmerAdapter();
-                    }
-                });
             }
         }).start();
 
@@ -291,7 +291,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String chapter = sochuong.text();
                             lstHotTrend.add(new Comic(name, viewCount, thumb, chapter, link));
                         }
-                        ;
+                        rv_HotTrend.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstHotTrend);
+                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                                rv_HotTrend.setLayoutManager(horizontalLayout);
+                                rv_HotTrend.setHasFixedSize(true);
+                                rv_HotTrend.setItemAnimator(new DefaultItemAnimator());
+                                rv_HotTrend.setAdapter(newUpdateAdapter);
+                                rv_HotTrend.hideShimmerAdapter();
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -303,18 +314,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
-                rv_HotTrend.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        newUpdateAdapter = new ComicAdapter(MainActivity.this, lstHotTrend);
-                        LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        rv_HotTrend.setLayoutManager(horizontalLayout);
-                        rv_HotTrend.setHasFixedSize(true);
-                        rv_HotTrend.setItemAnimator(new DefaultItemAnimator());
-                        rv_HotTrend.setAdapter(newUpdateAdapter);
-                        rv_HotTrend.hideShimmerAdapter();
-                    }
-                });
+
             }
         }).start();
     }
@@ -368,7 +368,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String chapter = sochuong.text();
                             lstBoy.add(new Comic(name, viewCount, thumb, chapter, link));
                         }
-
+                        rv_Boy.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstBoy);
+                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                                rv_Boy.setLayoutManager(horizontalLayout);
+                                rv_Boy.setHasFixedSize(true);
+                                rv_Boy.setItemAnimator(new DefaultItemAnimator());
+                                rv_Boy.setAdapter(newUpdateAdapter);
+                                rv_Boy.hideShimmerAdapter();
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -380,18 +391,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
-                rv_Boy.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        newUpdateAdapter = new ComicAdapter(MainActivity.this, lstBoy);
-                        LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        rv_Boy.setLayoutManager(horizontalLayout);
-                        rv_Boy.setHasFixedSize(true);
-                        rv_Boy.setItemAnimator(new DefaultItemAnimator());
-                        rv_Boy.setAdapter(newUpdateAdapter);
-                        rv_Boy.hideShimmerAdapter();
-                    }
-                });
+
             }
         }).start();
 
@@ -448,7 +448,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String chapter = sochuong.text();
                             lstGirl.add(new Comic(name, viewCount, thumb, chapter, link));
                         }
-
+                        rv_Girl.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstGirl);
+                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                                rv_Girl.setLayoutManager(horizontalLayout);
+                                rv_Girl.setHasFixedSize(true);
+                                rv_Girl.setItemAnimator(new DefaultItemAnimator());
+                                rv_Girl.setAdapter(newUpdateAdapter);
+                                rv_Girl.hideShimmerAdapter();
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -460,18 +471,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
-                rv_Girl.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        newUpdateAdapter = new ComicAdapter(MainActivity.this, lstGirl);
-                        LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        rv_Girl.setLayoutManager(horizontalLayout);
-                        rv_Girl.setHasFixedSize(true);
-                        rv_Girl.setItemAnimator(new DefaultItemAnimator());
-                        rv_Girl.setAdapter(newUpdateAdapter);
-                        rv_Girl.hideShimmerAdapter();
-                    }
-                });
+
             }
         }).start();
     }
@@ -498,23 +498,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(inte);
                 break;
             case R.id.btn_truyenmoi:// TODO 18/10/26
-                more.putExtra("url",Link.URL_HOMEPAGE);
-                more.putExtra("title","Truyện mới cập nhật");
+                more.putExtra("url", Link.URL_HOMEPAGE);
+                more.putExtra("title", "Truyện mới cập nhật");
                 startActivity(more);
                 break;
             case R.id.btn_truyenhot:// TODO 18/10/26
-                more.putExtra("url",Link.URL_HOTTREND);
-                more.putExtra("title","Truyện hot");
+                more.putExtra("url", Link.URL_HOTTREND);
+                more.putExtra("title", "Truyện hot");
                 startActivity(more);
                 break;
             case R.id.btn_truyenCG:// TODO 18/10/26
-                more.putExtra("url",Link.URL_GIRL);
-                more.putExtra("title","Truyện con gái thích");
+                more.putExtra("url", Link.URL_GIRL);
+                more.putExtra("title", "Truyện con gái thích");
                 startActivity(more);
                 break;
             case R.id.btn_truyenCT:// TODO 18/10/26
-                more.putExtra("url",Link.URL_HOMEPAGE);
-                more.putExtra("title","Truyện con trai thích");
+                more.putExtra("url", Link.URL_HOMEPAGE);
+                more.putExtra("title", "Truyện con trai thích");
                 startActivity(more);
                 break;
             default:

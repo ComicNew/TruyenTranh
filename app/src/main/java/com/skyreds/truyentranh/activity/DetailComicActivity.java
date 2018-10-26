@@ -75,7 +75,18 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
                             String url = element.attr("src");
                             lstImage.add(new Image(url));
                         }
+                        mRvComic.post(new Runnable() {
+                            @Override
+                            public void run() {
 
+                                adapter = new ComicViewAdapter(getApplicationContext(), lstImage);
+                                RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
+                                mRvComic.setLayoutManager(mLayoutManager);
+                                mRvComic.setHasFixedSize(true);
+                                mRvComic.setItemAnimator(new DefaultItemAnimator());
+                                mRvComic.setAdapter(adapter);
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -87,18 +98,7 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
-                mRvComic.post(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        adapter = new ComicViewAdapter(getApplicationContext(), lstImage);
-                        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
-                        mRvComic.setLayoutManager(mLayoutManager);
-                        mRvComic.setHasFixedSize(true);
-                        mRvComic.setItemAnimator(new DefaultItemAnimator());
-                        mRvComic.setAdapter(adapter);
-                    }
-                });
             }
         }).start();
     }

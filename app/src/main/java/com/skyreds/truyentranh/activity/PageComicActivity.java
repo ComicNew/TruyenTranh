@@ -252,6 +252,30 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
                         Elements noidung = document.select("div.detail-content");
                         Element cont = noidung.select("p").first();
                         content = cont.text();
+                        mRvChapter.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                int i = restoringPreferences();
+                                if (i == 2) {
+                                    adapter = new ChapterAdapter(getApplicationContext(), lstChapNormal);
+                                    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+                                    mRvChapter.setLayoutManager(mLayoutManager);
+                                    mRvChapter.setHasFixedSize(true);
+                                    mRvChapter.setItemAnimator(new DefaultItemAnimator());
+                                    adapter.notifyDataSetChanged();
+                                    mRvChapter.setAdapter(adapter);
+                                }
+                                if (i == 1) {
+                                    adapter = new ChapterAdapter(getApplicationContext(), lstChapter);
+                                    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+                                    mRvChapter.setLayoutManager(mLayoutManager);
+                                    mRvChapter.setHasFixedSize(true);
+                                    mRvChapter.setItemAnimator(new DefaultItemAnimator());
+                                    adapter.notifyDataSetChanged();
+                                    mRvChapter.setAdapter(adapter);
+                                }
+                            }
+                        });
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -263,30 +287,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(stringRequest);
-                mRvChapter.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        int i = restoringPreferences();
-                        if (i == 2) {
-                            adapter = new ChapterAdapter(getApplicationContext(), lstChapNormal);
-                            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
-                            mRvChapter.setLayoutManager(mLayoutManager);
-                            mRvChapter.setHasFixedSize(true);
-                            mRvChapter.setItemAnimator(new DefaultItemAnimator());
-                            adapter.notifyDataSetChanged();
-                            mRvChapter.setAdapter(adapter);
-                        }
-                        if (i == 1) {
-                            adapter = new ChapterAdapter(getApplicationContext(), lstChapter);
-                            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
-                            mRvChapter.setLayoutManager(mLayoutManager);
-                            mRvChapter.setHasFixedSize(true);
-                            mRvChapter.setItemAnimator(new DefaultItemAnimator());
-                            adapter.notifyDataSetChanged();
-                            mRvChapter.setAdapter(adapter);
-                        }
-                    }
-                });
+
             }
         }).start();
     }
