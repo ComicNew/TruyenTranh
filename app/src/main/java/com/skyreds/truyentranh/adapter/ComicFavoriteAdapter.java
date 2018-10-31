@@ -34,7 +34,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_favorite_comic, parent, false);
+                .inflate(R.layout.favorite_comic_custom, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
         return viewHolder;

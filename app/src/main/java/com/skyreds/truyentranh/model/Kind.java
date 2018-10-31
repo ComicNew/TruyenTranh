@@ -1,10 +1,10 @@
 package com.skyreds.truyentranh.model;
 
-public class TheLoai {
+public class Kind {
     private String name;
     private String url;
 
-    public TheLoai(String name, String url) {
+    public Kind(String name, String url) {
         this.name = name;
         this.url = url;
     }

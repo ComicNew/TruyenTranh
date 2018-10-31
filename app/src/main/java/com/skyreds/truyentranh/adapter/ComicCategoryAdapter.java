@@ -8,15 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.activity.PageComicActivity;
 import com.skyreds.truyentranh.model.Category;
-import com.skyreds.truyentranh.model.Comic;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class ComicCategoryAdapter extends RecyclerView.Adapter<ComicCategoryAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.comic_item, parent, false);
+                .inflate(R.layout.item_comic, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
         return viewHolder;

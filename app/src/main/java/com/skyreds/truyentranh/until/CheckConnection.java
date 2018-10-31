@@ -11,11 +11,11 @@ import android.widget.Toast;
 
 import com.skyreds.truyentranh.activity.MainActivity;
 
-public class CheckConection {
+public class CheckConnection {
     private Context context;
     private View view;
 
-    public CheckConection(Context context, View view) {
+    public CheckConnection(Context context, View view) {
         this.context = context;
         this.view = view;
     }

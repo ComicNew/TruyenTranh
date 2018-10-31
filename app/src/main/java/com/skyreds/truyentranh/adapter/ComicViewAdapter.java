@@ -1,22 +1,14 @@
 package com.skyreds.truyentranh.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.skyreds.truyentranh.R;
-import com.skyreds.truyentranh.activity.DetailComicActivity;
-import com.skyreds.truyentranh.model.Chapter;
 import com.skyreds.truyentranh.model.Image;
 
 import java.util.List;
@@ -34,7 +26,7 @@ public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_item_image, parent, false);
+                .inflate(R.layout.item_custom_image, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
         return viewHolder;

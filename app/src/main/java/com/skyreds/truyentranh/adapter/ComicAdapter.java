@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.skyreds.truyentranh.activity.MainActivity;
 import com.skyreds.truyentranh.activity.PageComicActivity;
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.model.Comic;
@@ -23,7 +22,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
 public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> {
 
@@ -39,7 +37,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_item_comic, parent, false);
+                .inflate(R.layout.item_custom_comic, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
         return viewHolder;
     }

@@ -37,7 +37,7 @@ public class LoadmoreAdapter extends RecyclerView.Adapter<LoadmoreAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_more_comic, parent, false);
+                .inflate(R.layout.item_custom_more_comic, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
         return viewHolder;

@@ -2,16 +2,13 @@ package com.skyreds.truyentranh.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.skyreds.truyentranh.activity.DetailComicActivity;
-import com.skyreds.truyentranh.activity.PageComicActivity;
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.model.Chapter;
 
@@ -30,7 +27,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_item_chapter, parent, false);
+                .inflate(R.layout.item_custom_chapter, parent, false);
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
         return viewHolder;

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +16,6 @@ import com.skyreds.truyentranh.activity.PageComicActivity;
 import com.skyreds.truyentranh.model.Search;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdapterSearch extends ArrayAdapter<Search> {
 
@@ -38,7 +36,7 @@ public class AdapterSearch extends ArrayAdapter<Search> {
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = layoutInflater.inflate(R.layout.custom_item_search,viewGroup,false);
+        view = layoutInflater.inflate(R.layout.item_custom_search,viewGroup,false);
 
         TextView tvName = (TextView) view.findViewById(R.id.tvName);
         tvName.setText(lst.get(i).getName());

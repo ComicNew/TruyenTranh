@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -53,7 +52,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
         setContentView(R.layout.activity_top);
         initView();
         mEditAuto.addTextChangedListener(this);
-        adapterSearch = new AdapterSearch(this, R.layout.custom_item_search, lstSearch);
+        adapterSearch = new AdapterSearch(this, R.layout.item_custom_search, lstSearch);
         mEditAuto.setAdapter(adapterSearch);
         mEditAuto.setThreshold(0);
         addControl();
@@ -141,7 +140,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
                             }
                             lstSearch.add(new Search(name, thumb, link));
                         }
-                        adapterSearch = new AdapterSearch(TopActivity.this, R.layout.custom_item_search, lstSearch);
+                        adapterSearch = new AdapterSearch(TopActivity.this, R.layout.item_custom_search, lstSearch);
                         mEditAuto.setAdapter(adapterSearch);
                         adapterSearch.notifyDataSetChanged();
 

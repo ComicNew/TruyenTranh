@@ -30,7 +30,7 @@ import com.skyreds.truyentranh.adapter.AdapterSearch;
 import com.skyreds.truyentranh.adapter.ComicAdapter;
 import com.skyreds.truyentranh.model.Comic;
 import com.skyreds.truyentranh.model.Search;
-import com.skyreds.truyentranh.until.CheckConection;
+import com.skyreds.truyentranh.until.CheckConnection;
 import com.skyreds.truyentranh.until.Link;
 
 import org.json.JSONException;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<Search> lstSearch;
     List<Banner> banners;
     private RelativeLayout mRoot;
-    private CheckConection checkConection;
+    private CheckConnection checkConnection;
     private Button mTruyenmoiBtn;
     private Button mTruyenhotBtn;
     private Button mTruyenCGBtn;
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        checkConection = new CheckConection(MainActivity.this, mRoot);
-        checkConection.checkConnection();
+        checkConnection = new CheckConnection(MainActivity.this, mRoot);
+        checkConnection.checkConnection();
 
         FirebaseMessaging.getInstance();
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadComicGirl();
         Realm.init(this);
         mEditAuto.addTextChangedListener(this);
-        adapterSearch = new AdapterSearch(this, R.layout.custom_item_search, lstSearch);
+        adapterSearch = new AdapterSearch(this, R.layout.item_custom_search, lstSearch);
         mEditAuto.setAdapter(adapterSearch);
         mEditAuto.setThreshold(0);
 
@@ -575,7 +575,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     lstSearch.add(new Search(name, thumb, link));
                 }
-                adapterSearch = new AdapterSearch(MainActivity.this, R.layout.custom_item_search, lstSearch);
+                adapterSearch = new AdapterSearch(MainActivity.this, R.layout.item_custom_search, lstSearch);
                 mEditAuto.setAdapter(adapterSearch);
                 adapterSearch.notifyDataSetChanged();
             }
@@ -603,7 +603,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         Log.e("status:", "onresume");
-        checkConection.checkConnection();
+        checkConnection.checkConnection();
     }
 
     @Override
