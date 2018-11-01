@@ -1,6 +1,5 @@
 package com.skyreds.truyentranh.adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,9 +10,8 @@ import com.skyreds.truyentranh.fragment.TopWeekFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    public ViewPagerAdapter(Context context, FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        Context mContext = context;
     }
 
     @Override

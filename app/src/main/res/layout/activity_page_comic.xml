@@ -105,6 +105,7 @@
                         android:textSize="@dimen/text_normal" />
 
                     <TextView
+                        android:id="@+id/tv_kind"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin"
@@ -117,6 +118,7 @@
                         android:textSize="@dimen/text_normal" />
 
                     <TextView
+                        android:id="@+id/tv_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin"

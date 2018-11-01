@@ -2,6 +2,7 @@ package com.skyreds.truyentranh.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ import io.realm.Realm;
 public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdapter.ViewHolder> {
 
     private final List<Comic> lst;
-    private Context mContext;
+    private final Context mContext;
     private String name;
 
     public ComicFavoriteAdapter(Context context, List<Comic> comicList) {
@@ -31,8 +32,9 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
         this.mContext = context;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.favorite_comic_custom, parent, false);
 
@@ -41,13 +43,13 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvChapter;
-        public TextView tvName;
-        public TextView tvView;
-        public ImageView thumbnail;
-        public ImageButton btn_Delete;
+        final TextView tvChapter;
+        final TextView tvName;
+        final TextView tvView;
+        final ImageView thumbnail;
+        final ImageButton btn_Delete;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             tvChapter = itemView.findViewById(R.id.tvChapter);
             tvName = itemView.findViewById(R.id.tvName);
@@ -59,7 +61,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Comic item = lst.get(holder.getAdapterPosition());
         holder.tvChapter.setText(item.getChapter());
         holder.tvName.setText(item.getName());
@@ -88,7 +90,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
-            public void execute(Realm bgRealm) {
+            public void execute(@NonNull Realm bgRealm) {
                 ComicDatabase item = bgRealm.where(ComicDatabase.class).equalTo("name", itemName).findFirst();
                 if (item != null) {
                     item.deleteFromRealm();
@@ -102,7 +104,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
             }
         }, new Realm.Transaction.OnError() {
             @Override
-            public void onError(Throwable error) {
+            public void onError(@NonNull Throwable error) {
                 // Transaction failed and was automatically canceled.
             }
         });

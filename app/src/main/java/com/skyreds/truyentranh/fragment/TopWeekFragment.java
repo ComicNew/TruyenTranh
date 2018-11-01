@@ -37,16 +37,19 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressWarnings({"ConstantConditions", "StatementWithEmptyBody"})
 public class TopWeekFragment extends Fragment {
 
     private LinearLayout mNoPost;
     private RecyclerView mNgayRv;
 
     private Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+    private int currentItems;
+    private int totalItems;
+    private int scrollOutItems;
     private LinearLayoutManager manager;
     private int pos = 0;
-    ArrayList<String> lstUrl;
+    private ArrayList<String> lstUrl;
     private ArrayList<Comic> lstmore;
     private ArrayList<Comic> lstBXH;
     private LoadmoreAdapter adapterBXH;
@@ -65,13 +68,13 @@ public class TopWeekFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_top_week, container, false);
         initView(view);
 
-        loadBXH(Link.URL_WEEKEND);
+        loadBXH();
         mNgayRv.setLayoutManager(manager);
         mNgayRv.setHasFixedSize(true);
         mNgayRv.setItemAnimator(new DefaultItemAnimator());
@@ -110,12 +113,12 @@ public class TopWeekFragment extends Fragment {
         return view;
     }
 
-    void refreshItems() {
-        loadBXH(Link.URL_WEEKEND);
+    private void refreshItems() {
+        loadBXH();
 
     }
 
-    void onItemsLoadComplete() {
+    private void onItemsLoadComplete() {
         mSwipeMain.setRefreshing(false);
     }
 
@@ -130,7 +133,7 @@ public class TopWeekFragment extends Fragment {
 
     }
 
-    public void loadBookmore(final String url) {
+    private void loadBookmore(final String url) {
         pos++;
         lstmore.clear();
         new Thread(new Runnable() {
@@ -202,7 +205,7 @@ public class TopWeekFragment extends Fragment {
         }).start();
     }
 
-    public void loadBXH(final String url) {
+    private void loadBXH() {
         lstBXH.clear();
         new Thread(new Runnable() {
             @Override
@@ -210,7 +213,7 @@ public class TopWeekFragment extends Fragment {
 
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_WEEKEND, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Document document = Jsoup.parse(response);

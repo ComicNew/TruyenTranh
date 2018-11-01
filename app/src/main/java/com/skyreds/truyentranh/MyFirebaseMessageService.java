@@ -16,10 +16,11 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import com.skyreds.truyentranh.activity.MainActivity;
 
+import java.util.Objects;
+
 public class MyFirebaseMessageService extends FirebaseMessagingService {
-    private NotificationManager notificationManager;
     private static final String TAG = "MyFirebaseMsgService";
-    NotificationCompat.Builder notificationBuilder;
+    private NotificationCompat.Builder notificationBuilder;
     int notifyID = 1;
 
     @Override
@@ -53,9 +54,8 @@ public class MyFirebaseMessageService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
-        notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0 , notificationBuilder.build());
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Objects.requireNonNull(notificationManager).notify(0 , notificationBuilder.build());
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

@@ -2,6 +2,7 @@ package com.skyreds.truyentranh.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,16 +27,17 @@ import io.realm.RealmResults;
 public class LoadmoreAdapter extends RecyclerView.Adapter<LoadmoreAdapter.ViewHolder>{
 
     private final List<Comic> lst;
-    private Context mContext;
-    private Realm myRealm = Realm.getDefaultInstance();
+    private final Context mContext;
+    private final Realm myRealm = Realm.getDefaultInstance();
 
     public LoadmoreAdapter(Context context, List<Comic> comicList) {
         this.lst = comicList;
         this.mContext = context;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_custom_more_comic, parent, false);
 
@@ -44,11 +46,13 @@ public class LoadmoreAdapter extends RecyclerView.Adapter<LoadmoreAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvChapter, tvName, tvView;
-        public ImageView thumbnail;
-        public ImageButton btnFavorite;
+        final TextView tvChapter;
+        final TextView tvName;
+        final TextView tvView;
+        final ImageView thumbnail;
+        final ImageButton btnFavorite;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             tvChapter = itemView.findViewById(R.id.tvChapter);
             tvName = itemView.findViewById(R.id.tvName);
@@ -59,7 +63,7 @@ public class LoadmoreAdapter extends RecyclerView.Adapter<LoadmoreAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Comic item = lst.get(position);
         holder.tvChapter.setText(item.getChapter());
         holder.tvName.setText(item.getName());

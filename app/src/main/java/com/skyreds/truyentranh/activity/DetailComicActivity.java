@@ -26,6 +26,7 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("EmptyMethod")
 public class DetailComicActivity extends AppCompatActivity implements View.OnSystemUiVisibilityChangeListener {
 
     private ArrayList<Image> lstImage;

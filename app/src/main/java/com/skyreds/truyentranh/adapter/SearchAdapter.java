@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class SearchAdapter extends ArrayAdapter<Search> {
 
     private final ArrayList<Search> lst;
-    private Context mContext;
+    private final Context mContext;
     public SearchAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Search> objects) {
         super(context, resource, objects);
         this.lst = objects;
@@ -32,8 +32,9 @@ public class SearchAdapter extends ArrayAdapter<Search> {
         return 0;
     }
 
+    @NonNull
     @Override
-    public View getView(final int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, @NonNull ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = layoutInflater.inflate(R.layout.item_custom_search,viewGroup,false);

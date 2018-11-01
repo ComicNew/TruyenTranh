@@ -37,9 +37,9 @@ import org.jsoup.select.Elements;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+@SuppressWarnings({"StatementWithEmptyBody", "EmptyMethod"})
 public class TopActivity extends AppCompatActivity implements TextWatcher {
     private TabLayout tabLayout;
-    private ViewPagerAdapter adapter;
 
     private AutoCompleteTextView mEditAuto;
     private SearchAdapter adapterSearch;
@@ -76,7 +76,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
         ViewPager pager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         FragmentManager manager = getSupportFragmentManager();
-        adapter = new ViewPagerAdapter(this, manager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(manager);
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

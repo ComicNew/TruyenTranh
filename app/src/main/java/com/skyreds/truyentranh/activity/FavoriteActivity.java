@@ -58,10 +58,4 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
         mNoPost =  findViewById(R.id.noPost);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
-
 }

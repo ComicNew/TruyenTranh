@@ -30,7 +30,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
+@SuppressWarnings("StatementWithEmptyBody")
 public class CategoryActivity extends AppCompatActivity {
 
     private RecyclerView mRvComic;
@@ -46,11 +48,13 @@ public class CategoryActivity extends AppCompatActivity {
 
 
     private Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+    private int currentItems;
+    private int totalItems;
+    private int scrollOutItems;
     private LinearLayoutManager manager;
     private ArrayList<Comic> listMore;
     private int pos = 0;
-    ArrayList<String> lstUrl;
+    private ArrayList<String> lstUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +83,7 @@ public class CategoryActivity extends AppCompatActivity {
         setScrollRV();
     }
 
-    public void setScrollRV() {
+    private void setScrollRV() {
         mRvComic.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -115,7 +119,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
-    public void loadBook(final String url) {
+    private void loadBook(final String url) {
         lstComic.clear();
         new Thread(new Runnable() {
             @Override
@@ -151,7 +155,7 @@ public class CategoryActivity extends AppCompatActivity {
                             String link = linkComic.attr("href");
                             String view;
                             if (viewer.text().equals("")) {
-                                view = viewer2.text();
+                                view = Objects.requireNonNull(viewer2).text();
                             } else {
                                 view = viewer.text();
                             }
@@ -193,7 +197,7 @@ public class CategoryActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void loadBookmore(final String url) {
+    private void loadBookmore(final String url) {
         pos++;
         listMore.clear();
         new Thread(new Runnable() {
@@ -264,7 +268,7 @@ public class CategoryActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void loadCategory() {
+    private void loadCategory() {
         new Thread(new Runnable() {
             @Override
             public void run() {

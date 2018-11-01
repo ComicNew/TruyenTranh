@@ -33,8 +33,6 @@ import com.skyreds.truyentranh.model.Search;
 import com.skyreds.truyentranh.until.CheckConnection;
 import com.skyreds.truyentranh.until.Link;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -43,6 +41,7 @@ import org.jsoup.select.Elements;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import io.realm.Realm;
 import ss.com.bannerslider.banners.Banner;
@@ -50,6 +49,7 @@ import ss.com.bannerslider.banners.RemoteBanner;
 import ss.com.bannerslider.events.OnBannerClickListener;
 import ss.com.bannerslider.views.BannerSlider;
 
+@SuppressWarnings({"StatementWithEmptyBody", "EmptyMethod"})
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private ArrayList<Comic> lstNewUpdate;
     private ArrayList<Comic> lstHotTrend;
@@ -63,8 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ShimmerRecyclerView rv_HotTrend;
     private ShimmerRecyclerView rv_Boy;
     private ShimmerRecyclerView rv_Girl;
-    private Button mBXHBtn;
-    private Button mFavoriteBtn;
     private AutoCompleteTextView mEditAuto;
     private ArrayList<String> urlBanner;
     private SearchAdapter adapterSearch;
@@ -72,10 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private List<Banner> banners;
     private RelativeLayout mRoot;
     private CheckConnection checkConnection;
-    private Button mTruyenmoiBtn;
-    private Button mTruyenhotBtn;
-    private Button mTruyenCGBtn;
-    private Button mTruyenCTBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,23 +122,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rv_Girl = findViewById(R.id.rv_Girl);
         Button mTheLoaiBtn = findViewById(R.id.btn_TheLoai);
         mTheLoaiBtn.setOnClickListener(this);
-        mBXHBtn = findViewById(R.id.btn_BXH);
+        Button mBXHBtn = findViewById(R.id.btn_BXH);
         mBXHBtn.setOnClickListener(this);
-        mFavoriteBtn = findViewById(R.id.btn_Favorite);
+        Button mFavoriteBtn = findViewById(R.id.btn_Favorite);
         mFavoriteBtn.setOnClickListener(this);
         mEditAuto = findViewById(R.id.editAuto);
         mRoot = findViewById(R.id.root);
-        mTruyenmoiBtn = findViewById(R.id.btn_truyenmoi);
+        Button mTruyenmoiBtn = findViewById(R.id.btn_newCommic);
         mTruyenmoiBtn.setOnClickListener(this);
-        mTruyenhotBtn = findViewById(R.id.btn_truyenhot);
+        Button mTruyenhotBtn = findViewById(R.id.btn_hotCommic);
         mTruyenhotBtn.setOnClickListener(this);
-        mTruyenCGBtn = findViewById(R.id.btn_truyenCG);
+        Button mTruyenCGBtn = findViewById(R.id.btn_truyenCG);
         mTruyenCGBtn.setOnClickListener(this);
-        mTruyenCTBtn = findViewById(R.id.btn_truyenCT);
+        Button mTruyenCTBtn = findViewById(R.id.btn_truyenCT);
         mTruyenCTBtn.setOnClickListener(this);
     }
 
-    public void loadComicNewUpdate() {
+    private void loadComicNewUpdate() {
         lstNewUpdate.clear();
         new Thread(new Runnable() {
             @Override
@@ -180,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String link = linktruyen.attr("href");
                             String view;
                             if (luotxem.text().equals("")) {
-                                view = luotxem2.text();
+                                view = Objects.requireNonNull(luotxem2).text();
                             } else {
                                 view = luotxem.text();
                             }
@@ -239,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void loadComicHot() {
+    private void loadComicHot() {
         lstHotTrend.clear();
         new Thread(new Runnable() {
             @Override
@@ -319,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).start();
     }
 
-    public void loadComicBoy() {
+    private void loadComicBoy() {
         lstBoy.clear();
         new Thread(new Runnable() {
             @Override
@@ -398,7 +392,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void loadComicGirl() {
+    private void loadComicGirl() {
         lstGirl.clear();
         new Thread(new Runnable() {
             @Override
@@ -499,12 +493,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent inte = new Intent(MainActivity.this, FavoriteActivity.class);
                 startActivity(inte);
                 break;
-            case R.id.btn_truyenmoi:// TODO 18/10/26
+            case R.id.btn_newCommic:// TODO 18/10/26
                 more.putExtra("url", Link.URL_HOMEPAGE);
                 more.putExtra("title", "Truyện mới cập nhật");
                 startActivity(more);
                 break;
-            case R.id.btn_truyenhot:// TODO 18/10/26
+            case R.id.btn_hotCommic:// TODO 18/10/26
                 more.putExtra("url", Link.URL_HOT_TREND);
                 more.putExtra("title", "Truyện hot");
                 startActivity(more);
@@ -540,7 +534,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
     }
 
-    public void requestSearch() {
+    private void requestSearch() {
         lstSearch.clear();
         final String la = mEditAuto.getText().toString();
         String keyword = la.replaceAll(" ", "+");

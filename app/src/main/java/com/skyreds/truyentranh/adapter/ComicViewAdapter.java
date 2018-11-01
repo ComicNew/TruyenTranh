@@ -1,6 +1,7 @@
 package com.skyreds.truyentranh.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +17,16 @@ import java.util.List;
 public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.ViewHolder>{
 
     private final List<Image> lst;
-    private Context mContext;
+    private final Context mContext;
 
     public ComicViewAdapter(Context context, List<Image> chapterList) {
         this.lst = chapterList;
         this.mContext = context;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_custom_image, parent, false);
 
@@ -33,16 +35,16 @@ public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgComic;
+        final ImageView imgComic;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             imgComic = itemView.findViewById(R.id.photo_view);
         }
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Image item = lst.get(position);
 
 //        ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance

@@ -8,10 +8,13 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Objects;
 
+
+@SuppressWarnings("StatementWithEmptyBody")
 public class CheckConnection {
     private final Context context;
-    private View view;
+    private final View view;
 
     public CheckConnection(Context context, View view) {
         this.context = context;
@@ -20,7 +23,7 @@ public class CheckConnection {
 
     private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        NetworkInfo netInfo = Objects.requireNonNull(cm).getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
     public void checkConnection(){

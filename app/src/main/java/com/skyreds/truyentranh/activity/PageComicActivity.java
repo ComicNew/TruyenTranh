@@ -67,9 +67,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     private ChapterAdapter adapter;
     private TextView mUpdateTv;
     private TextView mViewTv;
-    private ArrayList<String> lstSpinner;
     private Spinner mSpinnerSort;
-    private ImageButton mLikeBtn;
     private Realm myRealm;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -81,12 +79,12 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         myRealm = Realm.getDefaultInstance();
         Intent intent = getIntent();
         URL_COMIC = intent.getStringExtra("url");
-        lstSpinner = new ArrayList<>();
+        ArrayList<String> lstSpinner = new ArrayList<>();
         lstSpinner.add("Sắp xếp");
         lstSpinner.add("Từ trên xuống");
         lstSpinner.add("Từ dưới lên");
         int restore = restoringPreferences();
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lstSpinner);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, lstSpinner);
         mSpinnerSort.setAdapter(spinnerAdapter);
         mSpinnerSort.setSelection(restore);
         mSpinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -155,7 +153,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void savingPreferences(int i) {
+    private void savingPreferences(int i) {
         SharedPreferences pre = getSharedPreferences("sort", MODE_PRIVATE);
         SharedPreferences.Editor editor = pre.edit();
         editor.putInt("sort", i);
@@ -163,13 +161,13 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-    public int restoringPreferences() {
+    private int restoringPreferences() {
         SharedPreferences pre = getSharedPreferences
                 ("sort", MODE_PRIVATE);
         return pre.getInt("sort", 2);
     }
 
-    public void loadBook(final String url) {
+    private void loadBook(final String url) {
         lstChapNormal.clear();
         new Thread(new Runnable() {
             @Override
@@ -302,7 +300,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     }
 
     static class SavedState extends View.BaseSavedState {
-        public int mScrollPosition;
+        int mScrollPosition;
 
         SavedState(Parcel in) {
             super(in);
@@ -337,15 +335,15 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         mImgThumb = findViewById(R.id.imgThumb);
         mTvName = findViewById(R.id.tvName);
         mTvAuthor = findViewById(R.id.tvAuthor);
-        mTvTrangThai = findViewById(R.id.tvTrangThai);
-        mTvTheLoai = findViewById(R.id.tvTheLoai);
+        mTvTrangThai = findViewById(R.id.tv_status);
+        mTvTheLoai = findViewById(R.id.tv_kind);
         lstChapter = new ArrayList<>();
         lstChapNormal = new ArrayList<>();
         mRvChapter = findViewById(R.id.rvChapter);
         mUpdateTv = findViewById(R.id.tv_Update);
         mViewTv = findViewById(R.id.tv_View);
         mSpinnerSort = findViewById(R.id.spinnerSort);
-        mLikeBtn = findViewById(R.id.btn_Like);
+        ImageButton mLikeBtn = findViewById(R.id.btn_Like);
         mLikeBtn.setOnClickListener(this);
     }
 }

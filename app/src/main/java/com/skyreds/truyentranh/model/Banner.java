@@ -1,6 +1,6 @@
 package com.skyreds.truyentranh.model;
 
-public class Banner {
+class Banner {
 
     private String name;
     private String thumb;

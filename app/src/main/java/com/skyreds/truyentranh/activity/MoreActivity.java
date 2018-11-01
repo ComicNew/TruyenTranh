@@ -28,7 +28,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
+@SuppressWarnings("StatementWithEmptyBody")
 public class MoreActivity extends AppCompatActivity {
 
     private RecyclerView mRvComic;
@@ -37,11 +39,13 @@ public class MoreActivity extends AppCompatActivity {
     private LoadmoreAdapter adapterBXH;
 
     private Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+    private int currentItems;
+    private int totalItems;
+    private int scrollOutItems;
     private LinearLayoutManager manager;
     private ArrayList<Comic> lstmore;
     private int pos = 0;
-    ArrayList<String> lstUrl;
+    private ArrayList<String> lstUrl;
     private TextView mTvTitle;
 
     @Override
@@ -68,7 +72,7 @@ public class MoreActivity extends AppCompatActivity {
         setScrollRV();
     }
 
-    public void setScrollRV() {
+    private void setScrollRV() {
         mRvComic.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -104,7 +108,7 @@ public class MoreActivity extends AppCompatActivity {
         lstUrl = new ArrayList<>();
     }
 
-    public void loadBookmore(final String url) {
+    private void loadBookmore(final String url) {
         pos++;
         lstmore.clear();
         new Thread(new Runnable() {
@@ -141,7 +145,7 @@ public class MoreActivity extends AppCompatActivity {
                             String link = linktruyen.attr("href");
                             String view;
                             if (luotxem.text().equals("")) {
-                                view = luotxem2.text();
+                                view = Objects.requireNonNull(luotxem2).text();
                             } else {
                                 view = luotxem.text();
                             }
@@ -174,7 +178,7 @@ public class MoreActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void loadBXH(final String url) {
+    private void loadBXH(final String url) {
         lstComic.clear();
         new Thread(new Runnable() {
             @Override
