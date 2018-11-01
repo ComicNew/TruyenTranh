@@ -150,11 +150,8 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
                                 String res = new String(response.data,
                                         HttpHeaderParser.parseCharset(response.headers, "utf-8"));
                                 JSONObject obj = new JSONObject(res);
-                            } catch (UnsupportedEncodingException e1) {
+                            } catch (UnsupportedEncodingException | JSONException e1) {
                                 e1.printStackTrace();
-                            }
-                            catch (JSONException e2) {
-                                e2.printStackTrace();
                             }
                         }
                     }
