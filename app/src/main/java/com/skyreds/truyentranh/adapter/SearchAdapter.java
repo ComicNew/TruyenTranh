@@ -17,11 +17,11 @@ import com.skyreds.truyentranh.model.Search;
 
 import java.util.ArrayList;
 
-public class AdapterSearch extends ArrayAdapter<Search> {
+public class SearchAdapter extends ArrayAdapter<Search> {
 
-    private ArrayList<Search> lst;
+    private final ArrayList<Search> lst;
     private Context mContext;
-    public AdapterSearch(@NonNull Context context, int resource, @NonNull ArrayList<Search> objects) {
+    public SearchAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Search> objects) {
         super(context, resource, objects);
         this.lst = objects;
         this.mContext = context;
@@ -38,16 +38,16 @@ public class AdapterSearch extends ArrayAdapter<Search> {
         LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = layoutInflater.inflate(R.layout.item_custom_search,viewGroup,false);
 
-        TextView tvName = (TextView) view.findViewById(R.id.tvName);
+        TextView tvName = view.findViewById(R.id.tvName);
         tvName.setText(lst.get(i).getName());
 
-        ImageView imgThumb = (ImageView) view.findViewById(R.id.imgThumb);
+        ImageView imgThumb = view.findViewById(R.id.imgThumb);
         Glide.with(mContext).load(lst.get(i).getThumb()).into(imgThumb);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, PageComicActivity.class);
-                intent.putExtra("url",lst.get(i).getUrl().toString());
+                intent.putExtra("url", lst.get(i).getUrl());
                 mContext.startActivity(intent);
             }
         });

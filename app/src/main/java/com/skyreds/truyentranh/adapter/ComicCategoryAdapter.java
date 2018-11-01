@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ComicCategoryAdapter extends RecyclerView.Adapter<ComicCategoryAdapter.ViewHolder>{
 
-    private List<Category> lst;
+    private final List<Category> lst;
     private Context mContext;
 
     public ComicCategoryAdapter(Context context, List<Category> comicList) {
@@ -31,23 +31,23 @@ public class ComicCategoryAdapter extends RecyclerView.Adapter<ComicCategoryAdap
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_comic, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(itemView);
 
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvDesc, tvName;
+        TextView tvDesc;
+        public TextView tvName;
         public ImageView thumbnail;
         public ImageView rootbg;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvDesc = (TextView) itemView.findViewById(R.id.tvDesc);
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            thumbnail = (ImageView) itemView.findViewById(R.id.imgThumb);
-            rootbg = (ImageView) itemView.findViewById(R.id.rootbg);
+            tvDesc = itemView.findViewById(R.id.tvDesc);
+            tvName = itemView.findViewById(R.id.tvName);
+            thumbnail = itemView.findViewById(R.id.imgThumb);
+            rootbg = itemView.findViewById(R.id.rootbg);
         }
     }
 
@@ -55,8 +55,8 @@ public class ComicCategoryAdapter extends RecyclerView.Adapter<ComicCategoryAdap
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Category item = lst.get(position);
         Glide.with(mContext).load(item.getThumb()).into(holder.rootbg);
-        holder.tvDesc.setText(Html.fromHtml(item.getContent().toString()));
-        holder.tvName.setText(item.getName().toString());
+        holder.tvDesc.setText(Html.fromHtml(item.getContent()));
+        holder.tvName.setText(item.getName());
         Glide.with(mContext).load(item.getThumb()).into(holder.thumbnail);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

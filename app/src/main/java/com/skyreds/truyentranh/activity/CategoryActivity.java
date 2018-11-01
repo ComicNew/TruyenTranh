@@ -1,16 +1,11 @@
 package com.skyreds.truyentranh.activity;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.AbsListView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -24,10 +19,7 @@ import com.dpizarro.uipicker.library.picker.PickerUI;
 import com.dpizarro.uipicker.library.picker.PickerUISettings;
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.adapter.ChapterAdapter;
-import com.skyreds.truyentranh.adapter.ComicAdapter;
-import com.skyreds.truyentranh.adapter.ComicCategoryAdapter;
 import com.skyreds.truyentranh.adapter.LoadmoreAdapter;
-import com.skyreds.truyentranh.model.Category;
 import com.skyreds.truyentranh.model.Chapter;
 import com.skyreds.truyentranh.model.Comic;
 import com.skyreds.truyentranh.until.Link;
@@ -39,8 +31,6 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-
 public class CategoryActivity extends AppCompatActivity {
 
     private RecyclerView mRvComic;
@@ -49,16 +39,16 @@ public class CategoryActivity extends AppCompatActivity {
     private ArrayList<Comic> lstComic;
     private ArrayList<String> lstName;
 
-    private ChapterAdapter theLoaiAdapter;
+    private ChapterAdapter KindAdapter;
     private LoadmoreAdapter comicAdapter;
 
     private PickerUI mUiViewPicker;
 
 
-    Boolean isScrolling = false;
+    private Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     private LinearLayoutManager manager;
-    private ArrayList<Comic> lstmore;
+    private ArrayList<Comic> listMore;
     private int pos = 0;
     ArrayList<String> lstUrl;
 
@@ -67,7 +57,7 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         initView();
-        lstmore = new ArrayList<>();
+        listMore = new ArrayList<>();
         loadCategory();
 
         comicAdapter = new LoadmoreAdapter(CategoryActivity.this, lstComic);
@@ -82,7 +72,7 @@ public class CategoryActivity extends AppCompatActivity {
         mUiViewPicker.setOnClickItemPickerUIListener(new PickerUI.PickerUIItemClickListener() {
             @Override
             public void onItemClickPickerUI(int which, int position, String valueResult) {
-                loadBook(lstTheLoai.get(position).getUrl().toString());
+                loadBook(lstTheLoai.get(position).getUrl());
             }
         });
 
@@ -109,7 +99,7 @@ public class CategoryActivity extends AppCompatActivity {
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
                     if (pos <= lstUrl.size()) {
-                        loadBookmore(lstUrl.get(pos).toString());
+                        loadBookmore(lstUrl.get(pos));
                     }
                 }
             }
@@ -117,11 +107,11 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mRvComic = (RecyclerView) findViewById(R.id.rvComic);
+        mRvComic = findViewById(R.id.rvComic);
         lstComic = new ArrayList<>();
         lstTheLoai = new ArrayList<>();
         lstName = new ArrayList<>();
-        mUiViewPicker = (PickerUI) findViewById(R.id.picker_ui_view);
+        mUiViewPicker = findViewById(R.id.picker_ui_view);
 
     }
 
@@ -138,32 +128,32 @@ public class CategoryActivity extends AppCompatActivity {
                         Elements all = document.select("div#ctl00_divCenter");
                         Elements sub = all.select(".item");
                         for (Element element : sub) {
-                            Element hinhanh = element.getElementsByTag("img").get(0);
-                            Element linktruyen = element.getElementsByTag("a").get(0);
-                            Element sochuong = element.getElementsByTag("a").get(2);
-                            Element tentruyen = element.getElementsByTag("h3").get(0);
-                            Element luotxem = element.getElementsByTag("span").get(0);
-                            Element luotxem2 = null;
+                            Element image = element.getElementsByTag("img").get(0);
+                            Element linkComic = element.getElementsByTag("a").get(0);
+                            Element chap = element.getElementsByTag("a").get(2);
+                            Element nameComic = element.getElementsByTag("h3").get(0);
+                            Element viewer = element.getElementsByTag("span").get(0);
+                            Element viewer2 = null;
                             try {
-                                luotxem2 = element.getElementsByTag("span").get(1);
+                                viewer2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
-                            String thumb1 = hinhanh.attr("src");
-                            String thumb2 = hinhanh.attr("data-original");
+                            String thumb1 = image.attr("src");
+                            String thumb2 = image.attr("data-original");
                             if (thumb2.equals("")) {
                                 thumb = thumb1;
                             } else {
                                 thumb = thumb2;
                             }
-                            String name = tentruyen.text();
-                            String link = linktruyen.attr("href");
+                            String name = nameComic.text();
+                            String link = linkComic.attr("href");
                             String view;
-                            if (luotxem.text().equals("")) {
-                                view = luotxem2.text();
+                            if (viewer.text().equals("")) {
+                                view = viewer2.text();
                             } else {
-                                view = luotxem.text();
+                                view = viewer.text();
                             }
                             String string = view;
                             String[] parts = string.split(" ");
@@ -173,7 +163,7 @@ public class CategoryActivity extends AppCompatActivity {
                             } else {
                                 thumb = "http:" + thumb;
                             }
-                            String chapter = sochuong.text();
+                            String chapter = chap.text();
                             lstComic.add(new Comic(name, viewCount, thumb, chapter, link));
                         }
 
@@ -205,7 +195,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     public void loadBookmore(final String url) {
         pos++;
-        lstmore.clear();
+        listMore.clear();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -217,32 +207,32 @@ public class CategoryActivity extends AppCompatActivity {
                         Elements all = document.select("div#ctl00_divCenter");
                         Elements sub = all.select(".item");
                         for (Element element : sub) {
-                            Element hinhanh = element.getElementsByTag("img").get(0);
-                            Element linktruyen = element.getElementsByTag("a").get(0);
-                            Element sochuong = element.getElementsByTag("a").get(2);
-                            Element tentruyen = element.getElementsByTag("h3").get(0);
-                            Element luotxem = element.getElementsByTag("span").get(0);
-                            Element luotxem2 = null;
+                            Element image = element.getElementsByTag("img").get(0);
+                            Element linkComic = element.getElementsByTag("a").get(0);
+                            Element chap = element.getElementsByTag("a").get(2);
+                            Element nameComic = element.getElementsByTag("h3").get(0);
+                            Element viewer = element.getElementsByTag("span").get(0);
+                            Element viewer2 = null;
                             try {
-                                luotxem2 = element.getElementsByTag("span").get(1);
+                                viewer2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
-                            String thumb1 = hinhanh.attr("src");
-                            String thumb2 = hinhanh.attr("data-original");
+                            String thumb1 = image.attr("src");
+                            String thumb2 = image.attr("data-original");
                             if (thumb2.equals("")) {
                                 thumb = thumb1;
                             } else {
                                 thumb = thumb2;
                             }
-                            String name = tentruyen.text();
-                            String link = linktruyen.attr("href");
+                            String name = nameComic.text();
+                            String link = linkComic.attr("href");
                             String view;
-                            if (luotxem.text().equals("")) {
-                                view = luotxem2.text();
+                            if (viewer.text().equals("")) {
+                                view = viewer2.text();
                             } else {
-                                view = luotxem.text();
+                                view = viewer.text();
                             }
                             String string = view;
                             String[] parts = string.split(" ");
@@ -252,10 +242,10 @@ public class CategoryActivity extends AppCompatActivity {
                             } else {
                                 thumb = "http:" + thumb;
                             }
-                            String chapter = sochuong.text();
-                            lstmore.add(new Comic(name, viewCount, thumb, chapter, link));
+                            String chapter = chap.text();
+                            listMore.add(new Comic(name, viewCount, thumb, chapter, link));
                         }
-                        lstComic.addAll(lstmore);
+                        lstComic.addAll(listMore);
                         comicAdapter.notifyDataSetChanged();
 
 
@@ -279,7 +269,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void run() {
                 RequestQueue requestQueue = Volley.newRequestQueue(CategoryActivity.this);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_THELOAI, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_KIND, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         lstTheLoai.clear();

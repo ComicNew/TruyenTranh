@@ -43,7 +43,9 @@ public class TopMonthFragment extends Fragment {
     private RecyclerView mNgayRv;
 
     Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+    private int currentItems;
+    int totalItems;
+    int scrollOutItems;
     private LinearLayoutManager manager;
     private int pos = 0;
     ArrayList<String> lstUrl;
@@ -56,11 +58,11 @@ public class TopMonthFragment extends Fragment {
         lstBXH = new ArrayList<>();
         lstUrl = new ArrayList<>();
         lstmore = new ArrayList<>();
-        mNoPost = (LinearLayout) itemView.findViewById(R.id.noPost);
-        mNgayRv = (RecyclerView) itemView.findViewById(R.id.rv_Ngay);
+        mNoPost = itemView.findViewById(R.id.noPost);
+        mNgayRv = itemView.findViewById(R.id.rv_Ngay);
         adapterBXH = new LoadmoreAdapter(getContext(), lstBXH);
         manager = new LinearLayoutManager(getContext());
-        mSwipeMain = (SwipeRefreshLayout) itemView.findViewById(R.id.swipeRefreshLayout);
+        mSwipeMain = itemView.findViewById(R.id.swipeRefreshLayout);
     }
 
     public TopMonthFragment() {
@@ -107,7 +109,7 @@ public class TopMonthFragment extends Fragment {
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
                     if (pos <= lstUrl.size() - 1) {
-                        loadBookmore(lstUrl.get(pos).toString());
+                        loadBookmore(lstUrl.get(pos));
                     }
                 }
             }
@@ -159,7 +161,7 @@ public class TopMonthFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -228,7 +230,7 @@ public class TopMonthFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");

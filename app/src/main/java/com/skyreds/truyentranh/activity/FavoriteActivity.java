@@ -1,15 +1,12 @@
 package com.skyreds.truyentranh.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.adapter.ComicFavoriteAdapter;
@@ -22,11 +19,9 @@ import java.util.ArrayList;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 
 public class FavoriteActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
-    private ComicFavoriteAdapter adapterBXH;
     private ArrayList<Comic> lstBXH;
     private RecyclerView mFavoriteRv;
     private LinearLayout mNoPost;
@@ -49,7 +44,7 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
         } else{
             mNoPost.setVisibility(View.GONE);
         }
-        adapterBXH = new ComicFavoriteAdapter(FavoriteActivity.this, lstBXH);
+        ComicFavoriteAdapter adapterBXH = new ComicFavoriteAdapter(FavoriteActivity.this, lstBXH);
         RecyclerView.LayoutManager verticalLayout = new GridLayoutManager(FavoriteActivity.this, 3);
         mFavoriteRv.setLayoutManager(verticalLayout);
         mFavoriteRv.setHasFixedSize(true);
@@ -59,7 +54,7 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
 
     private void initView() {
         lstBXH = new ArrayList<>();
-        mFavoriteRv = (RecyclerView) findViewById(R.id.rv_favorite);
+        mFavoriteRv = findViewById(R.id.rv_favorite);
         mNoPost =  findViewById(R.id.noPost);
     }
 
@@ -69,8 +64,4 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
 
     }
 
-    @Override
-    public void recyclerViewListClicked(View v, int position) {
-
-    }
 }

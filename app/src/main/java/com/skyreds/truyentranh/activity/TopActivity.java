@@ -22,7 +22,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.skyreds.truyentranh.R;
-import com.skyreds.truyentranh.adapter.AdapterSearch;
+import com.skyreds.truyentranh.adapter.SearchAdapter;
 import com.skyreds.truyentranh.adapter.ViewPagerAdapter;
 import com.skyreds.truyentranh.model.Search;
 import com.skyreds.truyentranh.until.Link;
@@ -38,21 +38,21 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class TopActivity extends AppCompatActivity implements TextWatcher {
-    private ViewPager pager;
     private TabLayout tabLayout;
     private ViewPagerAdapter adapter;
 
     private AutoCompleteTextView mEditAuto;
-    private AdapterSearch adapterSearch;
+    private SearchAdapter adapterSearch;
     private ArrayList<Search> lstSearch;
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         initView();
         mEditAuto.addTextChangedListener(this);
-        adapterSearch = new AdapterSearch(this, R.layout.item_custom_search, lstSearch);
+        adapterSearch = new SearchAdapter(this, R.layout.item_custom_search, lstSearch);
         mEditAuto.setAdapter(adapterSearch);
         mEditAuto.setThreshold(0);
         addControl();
@@ -68,19 +68,19 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
     }
 
     private void initView() {
-        mEditAuto = (AutoCompleteTextView) findViewById(R.id.editAuto);
+        mEditAuto = findViewById(R.id.editAuto);
         lstSearch = new ArrayList<>();
     }
 
     private void addControl() {
-        pager = (ViewPager) findViewById(R.id.view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ViewPager pager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
         FragmentManager manager = getSupportFragmentManager();
         adapter = new ViewPagerAdapter(this, manager);
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(adapter);//deprecated
+//        tabLayout.setTabsFromPagerAdapter(adapter);//deprecated
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
     }
 
@@ -92,6 +92,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
         try {
             requestSearch();
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }
@@ -99,12 +100,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
     public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    public void requestSearch() {
+    private void requestSearch() {
         lstSearch.clear();
         new Thread(new Runnable() {
             @Override
@@ -140,7 +136,7 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
                             }
                             lstSearch.add(new Search(name, thumb, link));
                         }
-                        adapterSearch = new AdapterSearch(TopActivity.this, R.layout.item_custom_search, lstSearch);
+                        adapterSearch = new SearchAdapter(TopActivity.this, R.layout.item_custom_search, lstSearch);
                         mEditAuto.setAdapter(adapterSearch);
                         adapterSearch.notifyDataSetChanged();
 
@@ -156,7 +152,8 @@ public class TopActivity extends AppCompatActivity implements TextWatcher {
                                 JSONObject obj = new JSONObject(res);
                             } catch (UnsupportedEncodingException e1) {
                                 e1.printStackTrace();
-                            } catch (JSONException e2) {
+                            }
+                            catch (JSONException e2) {
                                 e2.printStackTrace();
                             }
                         }

@@ -5,18 +5,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.fragment.TopDayFragment;
 import com.skyreds.truyentranh.fragment.TopMonthFragment;
 import com.skyreds.truyentranh.fragment.TopWeekFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    private Context mContext;
-
     public ViewPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        mContext = context;
+        Context mContext = context;
     }
 
     @Override

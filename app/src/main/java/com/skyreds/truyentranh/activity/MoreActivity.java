@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.AbsListView;
 import android.widget.TextView;
 
@@ -20,9 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.skyreds.truyentranh.R;
-import com.skyreds.truyentranh.adapter.ChapterAdapter;
 import com.skyreds.truyentranh.adapter.LoadmoreAdapter;
-import com.skyreds.truyentranh.model.Chapter;
 import com.skyreds.truyentranh.model.Comic;
 
 import org.jsoup.Jsoup;
@@ -39,14 +36,13 @@ public class MoreActivity extends AppCompatActivity {
     private ArrayList<Comic> lstComic;
     private LoadmoreAdapter adapterBXH;
 
-    Boolean isScrolling = false;
+    private Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     private LinearLayoutManager manager;
     private ArrayList<Comic> lstmore;
     private int pos = 0;
     ArrayList<String> lstUrl;
     private TextView mTvTitle;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +88,7 @@ public class MoreActivity extends AppCompatActivity {
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
                     if (pos <= lstUrl.size()) {
-                        loadBookmore(lstUrl.get(pos).toString());
+                        loadBookmore(lstUrl.get(pos));
                     }
                 }
             }
@@ -100,10 +96,10 @@ public class MoreActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mRvComic = (RecyclerView) findViewById(R.id.rvComic);
+        mRvComic = findViewById(R.id.rvComic);
         lstComic = new ArrayList<>();
-        mTvTitle = (TextView) findViewById(R.id.tvTitle);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mTvTitle = findViewById(R.id.tvTitle);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         lstmore = new ArrayList<>();
         lstUrl = new ArrayList<>();
     }
@@ -131,7 +127,7 @@ public class MoreActivity extends AppCompatActivity {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -220,6 +216,7 @@ public class MoreActivity extends AppCompatActivity {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
+                                ex.printStackTrace();
 
                             }
                             String thumb;

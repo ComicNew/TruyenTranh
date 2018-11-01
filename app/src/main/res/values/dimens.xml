@@ -10,7 +10,6 @@
     <dimen name="padding">16dp</dimen>
     <dimen name="border_card">4dp</dimen>
     <dimen name="border_right">20dp</dimen>
-    <dimen name="height_image">150dp</dimen>
     <dimen name="text_hint">12sp</dimen>
     <dimen name="text_normal">14sp</dimen>
     <dimen name="text_header">16sp</dimen>

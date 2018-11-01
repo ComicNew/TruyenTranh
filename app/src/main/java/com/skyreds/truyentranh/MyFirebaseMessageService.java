@@ -1,6 +1,5 @@
 package com.skyreds.truyentranh;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,9 +16,8 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import com.skyreds.truyentranh.activity.MainActivity;
 
-public class myFirebaseMessageService extends FirebaseMessagingService {
-    private String CHANNEL_ID = "my_channel_01";
-    NotificationManager notificationManager;
+public class MyFirebaseMessageService extends FirebaseMessagingService {
+    private NotificationManager notificationManager;
     private static final String TAG = "MyFirebaseMsgService";
     NotificationCompat.Builder notificationBuilder;
     int notifyID = 1;
@@ -48,7 +46,7 @@ public class myFirebaseMessageService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        notificationBuilder = new NotificationCompat.Builder(this)
+        notificationBuilder.setAutoCancel(true)
                 .setSmallIcon(R.drawable.book)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(messageBody)
@@ -61,9 +59,9 @@ public class myFirebaseMessageService extends FirebaseMessagingService {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name =title;
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            String CHANNEL_ID = "my_channel_01";
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, title, importance);
 // Create a notification and set the notification channel.
             try {
                 notificationManager.createNotificationChannel(mChannel);

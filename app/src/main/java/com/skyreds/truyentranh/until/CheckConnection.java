@@ -7,12 +7,10 @@ import android.net.NetworkInfo;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.skyreds.truyentranh.activity.MainActivity;
 
 public class CheckConnection {
-    private Context context;
+    private final Context context;
     private View view;
 
     public CheckConnection(Context context, View view) {
@@ -20,20 +18,16 @@ public class CheckConnection {
         this.view = view;
     }
 
-    protected boolean isOnline() {
+    private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        } else {
-            return false;
-        }
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
     public void checkConnection(){
         if(isOnline()){
         }else{
             Snackbar snackbar = Snackbar
-                    .make(view, "Không có kết nối internet!", Snackbar.LENGTH_LONG)
+                    .make(view, " Không có kết nối internet!", Snackbar.LENGTH_LONG)
                     .setAction("Bật 3G/Wifi", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -41,7 +35,7 @@ public class CheckConnection {
                     });
             snackbar.setActionTextColor(Color.RED);
             View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
             textView.setTextColor(Color.YELLOW);
             snackbar.show();
         }

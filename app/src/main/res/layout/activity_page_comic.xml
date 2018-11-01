@@ -42,7 +42,7 @@
                             android:layout_height="200dp"
                             android:contentDescription="@string/describeImageView"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bgtest" />
+                            android:src="@drawable/cover_image" />
 
                         <ImageButton
                             android:id="@+id/btn_Like"
@@ -105,7 +105,6 @@
                         android:textSize="@dimen/text_normal" />
 
                     <TextView
-                        android:id="@+id/tvTrangThai"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin"
@@ -118,7 +117,6 @@
                         android:textSize="@dimen/text_normal" />
 
                     <TextView
-                        android:id="@+id/tvTheLoai"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin"

@@ -25,9 +25,9 @@ import io.realm.RealmResults;
 
 public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> {
 
-    private List<Comic> lst;
+    private final List<Comic> lst;
     private Context mContext;
-    Realm myRealm = Realm.getDefaultInstance();
+    private Realm myRealm = Realm.getDefaultInstance();
 
     public ComicAdapter(Context context, List<Comic> comicList) {
         this.lst = comicList;
@@ -38,8 +38,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_custom_comic, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(itemView);
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -50,11 +49,11 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvChapter = (TextView) itemView.findViewById(R.id.tvChapter);
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvView = (TextView) itemView.findViewById(R.id.tv_View);
-            thumbnail = (ImageView) itemView.findViewById(R.id.imgThumb);
-            btnFavorite = (ImageButton) itemView.findViewById(R.id.btn_Like);
+            tvChapter = itemView.findViewById(R.id.tvChapter);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvView = itemView.findViewById(R.id.tv_View);
+            thumbnail = itemView.findViewById(R.id.imgThumb);
+            btnFavorite = itemView.findViewById(R.id.btn_Like);
         }
     }
 
@@ -73,7 +72,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
                         myRealm.where(ComicDatabase.class).findAll();
                 for (ComicDatabase c : results1) {
                     if (c.getName() != null)
-                        if (c.getName().equals(item.getName().toString().trim())) {
+                        if (c.getName().equals(item.getName().trim())) {
                             Toast.makeText(mContext, "Truyện đã có trong mục yêu thích !", Toast.LENGTH_SHORT).show();
                             check = true;
                             Log.e("check:", String.valueOf(check));
@@ -82,12 +81,12 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
                         }
                 }
 
-                if (check == false) {
+                if (!check) {
                     myRealm.beginTransaction();
                     ComicDatabase comic = myRealm.createObject(ComicDatabase.class);
-                    comic.setName(item.getName().toString());
-                    comic.setChapter(item.getChapter().toString());
-                    comic.setThumb(item.getThumb().toString());
+                    comic.setName(item.getName());
+                    comic.setChapter(item.getChapter());
+                    comic.setThumb(item.getThumb());
                     comic.setView(item.getView());
                     comic.setUrl(item.getLinkComic());
                     myRealm.commitTransaction();
@@ -107,7 +106,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, PageComicActivity.class);
-                intent.putExtra("url", item.getLinkComic().toString());
+                intent.putExtra("url", item.getLinkComic());
                 mContext.startActivity(intent);
             }
         });

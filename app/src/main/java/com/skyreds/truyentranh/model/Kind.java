@@ -1,6 +1,6 @@
 package com.skyreds.truyentranh.model;
 
-public class Kind {
+class Kind {
     private String name;
     private String url;
 

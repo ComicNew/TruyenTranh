@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.skyreds.truyentranh">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.skyreds.truyentranh"
+    tools:ignore="GoogleAppIndexingWarning">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -32,12 +34,12 @@
             android:name=".activity.TopActivity"
             android:windowSoftInputMode="stateHidden"></activity>
 
-        <service android:name=".myFirebaseMessageService">
+        <service android:name=".MyFirebaseMessageService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".fbInstanceIDService">
+        <service android:name=".FbInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

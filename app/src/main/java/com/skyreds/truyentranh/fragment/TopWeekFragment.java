@@ -42,7 +42,7 @@ public class TopWeekFragment extends Fragment {
     private LinearLayout mNoPost;
     private RecyclerView mNgayRv;
 
-    Boolean isScrolling = false;
+    private Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     private LinearLayoutManager manager;
     private int pos = 0;
@@ -56,11 +56,11 @@ public class TopWeekFragment extends Fragment {
         lstBXH = new ArrayList<>();
         lstUrl = new ArrayList<>();
         lstmore = new ArrayList<>();
-        mNoPost = (LinearLayout) itemView.findViewById(R.id.noPost);
-        mNgayRv = (RecyclerView) itemView.findViewById(R.id.rv_Ngay);
+        mNoPost = itemView.findViewById(R.id.noPost);
+        mNgayRv = itemView.findViewById(R.id.rv_Ngay);
         adapterBXH = new LoadmoreAdapter(getContext(), lstBXH);
         manager = new LinearLayoutManager(getContext());
-        mSwipeMain = (SwipeRefreshLayout) itemView.findViewById(R.id.swipeRefreshLayout);
+        mSwipeMain = itemView.findViewById(R.id.swipeRefreshLayout);
     }
 
 
@@ -102,7 +102,7 @@ public class TopWeekFragment extends Fragment {
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
                     if (pos <= lstUrl.size() - 1) {
-                        loadBookmore(lstUrl.get(pos).toString());
+                        loadBookmore(lstUrl.get(pos));
                     }
                 }
             }
@@ -155,7 +155,7 @@ public class TopWeekFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -226,7 +226,7 @@ public class TopWeekFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");

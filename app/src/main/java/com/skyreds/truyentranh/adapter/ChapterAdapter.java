@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHolder>{
 
-    private List<Chapter> lst;
+    private final List<Chapter> lst;
     private Context mContext;
 
     public ChapterAdapter(Context context, List<Chapter> chapterList) {
@@ -28,18 +28,17 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_custom_chapter, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(itemView);
 
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public Button tvName;
+        Button tvName;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvName = (Button) itemView.findViewById(R.id.tvName);
+            tvName = itemView.findViewById(R.id.tvName);
         }
     }
 

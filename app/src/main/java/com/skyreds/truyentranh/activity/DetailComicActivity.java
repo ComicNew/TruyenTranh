@@ -6,11 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -30,11 +26,8 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-
 public class DetailComicActivity extends AppCompatActivity implements View.OnSystemUiVisibilityChangeListener {
 
-    private String URL_IMAGE;
     private ArrayList<Image> lstImage;
     private ComicViewAdapter adapter;
     private RecyclerView mRvComic;
@@ -45,7 +38,7 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
         setContentView(R.layout.activity_detail_comic);
         initView();
         Intent intent = getIntent();
-        URL_IMAGE = intent.getStringExtra("url");
+        String URL_IMAGE = intent.getStringExtra("url");
         mRvComic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +50,7 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
 
     }
 
-    public void loadBook(final String url) {
+    private void loadBook(final String url) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -104,11 +97,6 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
@@ -137,7 +125,7 @@ public class DetailComicActivity extends AppCompatActivity implements View.OnSys
 
     private void initView() {
         lstImage = new ArrayList<>();
-        mRvComic = (RecyclerView) findViewById(R.id.rvComic);
+        mRvComic = findViewById(R.id.rvComic);
     }
 
     @Override

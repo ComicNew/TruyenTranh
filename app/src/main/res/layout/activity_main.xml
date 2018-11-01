@@ -142,7 +142,6 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/btn_truyenmoi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -160,12 +159,12 @@
                         android:layout_margin="4dp"
                         app:shimmer_demo_angle="20"
                         app:shimmer_demo_child_count="1"
-                        app:shimmer_demo_layout="@layout/row_shimer"
+                        app:shimmer_demo_layout="@layout/row_shimmer"
                         app:shimmer_demo_layout_manager_type="linear_vertical"
                         app:shimmer_demo_shimmer_color="@color/background" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-            <!--Truyện hot nhất-->
+            <!--Truyen hot -->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,7 +197,6 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/btn_truyenhot"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -215,12 +213,12 @@
                         android:layout_margin="4dp"
                         app:shimmer_demo_angle="20"
                         app:shimmer_demo_child_count="1"
-                        app:shimmer_demo_layout="@layout/row_shimer"
+                        app:shimmer_demo_layout="@layout/row_shimmer"
                         app:shimmer_demo_layout_manager_type="linear_vertical"
                         app:shimmer_demo_shimmer_color="@color/background" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-            <!--Truyện con gái-->
+            <!--Truyen nu-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -270,12 +268,12 @@
                         android:layout_margin="4dp"
                         app:shimmer_demo_angle="20"
                         app:shimmer_demo_child_count="1"
-                        app:shimmer_demo_layout="@layout/row_shimer"
+                        app:shimmer_demo_layout="@layout/row_shimmer"
                         app:shimmer_demo_layout_manager_type="linear_vertical"
                         app:shimmer_demo_shimmer_color="@color/background" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-            <!--Truyện con trai-->
+            <!--Truyen nam-->
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -327,7 +325,7 @@
 
                         app:shimmer_demo_angle="20"
                         app:shimmer_demo_child_count="1"
-                        app:shimmer_demo_layout="@layout/row_shimer"
+                        app:shimmer_demo_layout="@layout/row_shimmer"
                         app:shimmer_demo_layout_manager_type="linear_vertical"
                         app:shimmer_demo_shimmer_color="@color/background" />
                 </LinearLayout>

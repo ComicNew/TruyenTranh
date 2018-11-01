@@ -67,7 +67,6 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     private ChapterAdapter adapter;
     private TextView mUpdateTv;
     private TextView mViewTv;
-    private ArrayAdapter<String> spinnerAdapter;
     private ArrayList<String> lstSpinner;
     private Spinner mSpinnerSort;
     private ImageButton mLikeBtn;
@@ -87,7 +86,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         lstSpinner.add("Từ trên xuống");
         lstSpinner.add("Từ dưới lên");
         int restore = restoringPreferences();
-        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lstSpinner);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lstSpinner);
         mSpinnerSort.setAdapter(spinnerAdapter);
         mSpinnerSort.setSelection(restore);
         mSpinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -127,7 +126,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    public void addToDB(String title, String chapter, String thumb, String view, String url) {
+    private void addToDB(String title, String chapter, String thumb, String view, String url) {
 
         boolean check = false;
         RealmResults<ComicDatabase> results1 =
@@ -143,7 +142,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
                 }
         }
 
-        if (check == false) {
+        if (!check ) {
             myRealm.beginTransaction();
             ComicDatabase comic = myRealm.createObject(ComicDatabase.class);
             comic.setName(title);
@@ -167,8 +166,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     public int restoringPreferences() {
         SharedPreferences pre = getSharedPreferences
                 ("sort", MODE_PRIVATE);
-        int sort = pre.getInt("sort", 2);
-        return sort;
+        return pre.getInt("sort", 2);
     }
 
     public void loadBook(final String url) {
@@ -296,7 +294,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_Like:
-                addToDB(title, lstChapNormal.get(0).getName().toString(), thumb, theodoi, URL_COMIC);
+                addToDB(title, lstChapNormal.get(0).getName(), thumb, theodoi, URL_COMIC);
                 break;
             default:
                 break;
@@ -336,18 +334,18 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-        mImgThumb = (ImageView) findViewById(R.id.imgThumb);
-        mTvName = (TextView) findViewById(R.id.tvName);
-        mTvAuthor = (TextView) findViewById(R.id.tvAuthor);
-        mTvTrangThai = (TextView) findViewById(R.id.tvTrangThai);
-        mTvTheLoai = (TextView) findViewById(R.id.tvTheLoai);
+        mImgThumb = findViewById(R.id.imgThumb);
+        mTvName = findViewById(R.id.tvName);
+        mTvAuthor = findViewById(R.id.tvAuthor);
+        mTvTrangThai = findViewById(R.id.tvTrangThai);
+        mTvTheLoai = findViewById(R.id.tvTheLoai);
         lstChapter = new ArrayList<>();
         lstChapNormal = new ArrayList<>();
-        mRvChapter = (RecyclerView) findViewById(R.id.rvChapter);
-        mUpdateTv = (TextView) findViewById(R.id.tv_Update);
-        mViewTv = (TextView) findViewById(R.id.tv_View);
-        mSpinnerSort = (Spinner) findViewById(R.id.spinnerSort);
-        mLikeBtn = (ImageButton) findViewById(R.id.btn_Like);
+        mRvChapter = findViewById(R.id.rvChapter);
+        mUpdateTv = findViewById(R.id.tv_Update);
+        mViewTv = findViewById(R.id.tv_View);
+        mSpinnerSort = findViewById(R.id.spinnerSort);
+        mLikeBtn = findViewById(R.id.btn_Like);
         mLikeBtn.setOnClickListener(this);
     }
 }

@@ -22,7 +22,7 @@ import io.realm.Realm;
 
 public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdapter.ViewHolder> {
 
-    private List<Comic> lst;
+    private final List<Comic> lst;
     private Context mContext;
     private String name;
 
@@ -35,24 +35,25 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.favorite_comic_custom, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(itemView);
 
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvChapter, tvName, tvView;
+        TextView tvChapter;
+        public TextView tvName;
+        public TextView tvView;
         public ImageView thumbnail;
         public ImageButton btn_Delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvChapter = (TextView) itemView.findViewById(R.id.tvChapter);
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvView = (TextView) itemView.findViewById(R.id.tv_View);
-            thumbnail = (ImageView) itemView.findViewById(R.id.imgThumb);
-            btn_Delete = (ImageButton) itemView.findViewById(R.id.btn_Delete);
+            tvChapter = itemView.findViewById(R.id.tvChapter);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvView = itemView.findViewById(R.id.tv_View);
+            thumbnail = itemView.findViewById(R.id.imgThumb);
+            btn_Delete = itemView.findViewById(R.id.btn_Delete);
         }
 
     }
@@ -75,7 +76,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, PageComicActivity.class);
-                intent.putExtra("url", item.getLinkComic().toString());
+                intent.putExtra("url", item.getLinkComic());
                 mContext.startActivity(intent);
 
             }

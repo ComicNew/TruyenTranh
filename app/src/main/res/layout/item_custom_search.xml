@@ -22,7 +22,7 @@
                     <ImageView
                         android:contentDescription="@string/describeCoverStory"
                         android:id="@+id/imgThumb"
-                        android:src="@drawable/bgtest"
+                        android:src="@drawable/cover_image"
                         android:scaleType="fitXY"
                         android:layout_width="75dp"
                         android:layout_height="100dp" />

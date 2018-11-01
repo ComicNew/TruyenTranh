@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity KindAdapter" />
+      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter name" />
+      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.until.Link URL_KIND" />
+      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.MyFirebaseMessageService notifyID" />
+      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity content" />
+    </entry_points>
+    <pattern value="com.skyreds.truyentranh.model.Banner" method="Banner" />
+    <pattern value="com.skyreds.truyentranh.model.Category" method="Category" />
+    <pattern value="com.skyreds.truyentranh.model.Chapter" method="setName" />
+    <pattern value="com.skyreds.truyentranh.model.Comic" method="setLinkComic" />
+    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" method="ComicCategoryAdapter" />
+    <pattern value="com.skyreds.truyentranh.model.Image" method="setUrl" />
+    <pattern value="com.skyreds.truyentranh.model.Kind" method="getName" />
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
@@ -29,7 +45,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

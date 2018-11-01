@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.ViewHolder>{
 
-    private List<Image> lst;
+    private final List<Image> lst;
     private Context mContext;
 
     public ComicViewAdapter(Context context, List<Image> chapterList) {
@@ -27,18 +27,17 @@ public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_custom_image, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(itemView);
 
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView imgComic;
+        ImageView imgComic;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgComic = (ImageView) itemView.findViewById(R.id.photo_view);
+            imgComic = itemView.findViewById(R.id.photo_view);
         }
     }
 
@@ -49,7 +48,7 @@ public class ComicViewAdapter extends RecyclerView.Adapter<ComicViewAdapter.View
 //        ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance
 //        imageLoader.displayImage(item.getUrl().toString(), holder.imgComic);
 
-        Glide.with(mContext).load(item.getUrl().toString()).into(holder.imgComic);
+        Glide.with(mContext).load(item.getUrl()).into(holder.imgComic);
 //        CustomPicasso.with(mContext)
 //                .load(item.getUrl().toString())
 //                .error(R.drawable.bgtest)

@@ -6,7 +6,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 
-public class fbInstanceIDService extends FirebaseInstanceIdService {
+public class FbInstanceIdService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.

@@ -1,7 +1,6 @@
 package com.skyreds.truyentranh.fragment;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -23,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.skyreds.truyentranh.R;
 import com.skyreds.truyentranh.adapter.LoadmoreAdapter;
 import com.skyreds.truyentranh.model.Comic;
@@ -36,8 +34,6 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -48,7 +44,9 @@ public class TopDayFragment extends Fragment {
     private RecyclerView mNgayRv;
 
     Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+    private int currentItems;
+    int totalItems;
+    int scrollOutItems;
     private LinearLayoutManager manager;
     private int pos = 0;
     ArrayList<String> lstUrl;
@@ -61,11 +59,11 @@ public class TopDayFragment extends Fragment {
         lstBXH = new ArrayList<>();
         lstUrl = new ArrayList<>();
         lstmore = new ArrayList<>();
-        mNoPost = (LinearLayout) itemView.findViewById(R.id.noPost);
-        mNgayRv = (RecyclerView) itemView.findViewById(R.id.rv_Ngay);
+        mNoPost = itemView.findViewById(R.id.noPost);
+        mNgayRv = itemView.findViewById(R.id.rv_Ngay);
         adapterBXH = new LoadmoreAdapter(getContext(), lstBXH);
         manager = new LinearLayoutManager(getContext());
-        mSwipeMain = (SwipeRefreshLayout) itemView.findViewById(R.id.swipeRefreshLayout);
+        mSwipeMain = itemView.findViewById(R.id.swipeRefreshLayout);
     }
 
 
@@ -108,7 +106,7 @@ public class TopDayFragment extends Fragment {
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
                     if (pos <= lstUrl.size() - 1) {
-                        loadBookmore(lstUrl.get(pos).toString());
+                        loadBookmore(lstUrl.get(pos));
                     }
                 }
             }
@@ -159,7 +157,7 @@ public class TopDayFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -228,7 +226,7 @@ public class TopDayFragment extends Fragment {
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");

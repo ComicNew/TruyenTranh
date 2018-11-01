@@ -26,7 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.skyreds.truyentranh.R;
-import com.skyreds.truyentranh.adapter.AdapterSearch;
+import com.skyreds.truyentranh.adapter.SearchAdapter;
 import com.skyreds.truyentranh.adapter.ComicAdapter;
 import com.skyreds.truyentranh.model.Comic;
 import com.skyreds.truyentranh.model.Search;
@@ -63,14 +63,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ShimmerRecyclerView rv_HotTrend;
     private ShimmerRecyclerView rv_Boy;
     private ShimmerRecyclerView rv_Girl;
-    private Button mTheLoaiBtn;
     private Button mBXHBtn;
     private Button mFavoriteBtn;
     private AutoCompleteTextView mEditAuto;
     private ArrayList<String> urlBanner;
-    private AdapterSearch adapterSearch;
+    private SearchAdapter adapterSearch;
     private ArrayList<Search> lstSearch;
-    List<Banner> banners;
+    private List<Banner> banners;
     private RelativeLayout mRoot;
     private CheckConnection checkConnection;
     private Button mTruyenmoiBtn;
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadComicGirl();
         Realm.init(this);
         mEditAuto.addTextChangedListener(this);
-        adapterSearch = new AdapterSearch(this, R.layout.item_custom_search, lstSearch);
+        adapterSearch = new SearchAdapter(this, R.layout.item_custom_search, lstSearch);
         mEditAuto.setAdapter(adapterSearch);
         mEditAuto.setThreshold(0);
 
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(int position) {
                 Intent intent = new Intent(MainActivity.this, PageComicActivity.class);
-                intent.putExtra("url", urlBanner.get(position).toString());
+                intent.putExtra("url", urlBanner.get(position));
                 startActivity(intent);
             }
         });
@@ -122,26 +121,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         banners = new ArrayList<>();
         urlBanner = new ArrayList<>();
         lstSearch = new ArrayList<>();
-        mSliderBanner = (BannerSlider) findViewById(R.id.banner_slider);
-        rv_NewUpdate = (ShimmerRecyclerView) findViewById(R.id.rv_NewUpdate);
-        rv_HotTrend = (ShimmerRecyclerView) findViewById(R.id.rv_HotTrend);
-        rv_Boy = (ShimmerRecyclerView) findViewById(R.id.rv_Boy);
-        rv_Girl = (ShimmerRecyclerView) findViewById(R.id.rv_Girl);
-        mTheLoaiBtn = (Button) findViewById(R.id.btn_TheLoai);
+        mSliderBanner = findViewById(R.id.banner_slider);
+        rv_NewUpdate = findViewById(R.id.rv_NewUpdate);
+        rv_HotTrend = findViewById(R.id.rv_HotTrend);
+        rv_Boy = findViewById(R.id.rv_Boy);
+        rv_Girl = findViewById(R.id.rv_Girl);
+        Button mTheLoaiBtn = findViewById(R.id.btn_TheLoai);
         mTheLoaiBtn.setOnClickListener(this);
-        mBXHBtn = (Button) findViewById(R.id.btn_BXH);
+        mBXHBtn = findViewById(R.id.btn_BXH);
         mBXHBtn.setOnClickListener(this);
-        mFavoriteBtn = (Button) findViewById(R.id.btn_Favorite);
+        mFavoriteBtn = findViewById(R.id.btn_Favorite);
         mFavoriteBtn.setOnClickListener(this);
-        mEditAuto = (AutoCompleteTextView) findViewById(R.id.editAuto);
-        mRoot = (RelativeLayout) findViewById(R.id.root);
-        mTruyenmoiBtn = (Button) findViewById(R.id.btn_truyenmoi);
+        mEditAuto = findViewById(R.id.editAuto);
+        mRoot = findViewById(R.id.root);
+        mTruyenmoiBtn = findViewById(R.id.btn_truyenmoi);
         mTruyenmoiBtn.setOnClickListener(this);
-        mTruyenhotBtn = (Button) findViewById(R.id.btn_truyenhot);
+        mTruyenhotBtn = findViewById(R.id.btn_truyenhot);
         mTruyenhotBtn.setOnClickListener(this);
-        mTruyenCGBtn = (Button) findViewById(R.id.btn_truyenCG);
+        mTruyenCGBtn = findViewById(R.id.btn_truyenCG);
         mTruyenCGBtn.setOnClickListener(this);
-        mTruyenCTBtn = (Button) findViewById(R.id.btn_truyenCT);
+        mTruyenCTBtn = findViewById(R.id.btn_truyenCT);
         mTruyenCTBtn.setOnClickListener(this);
     }
 
@@ -167,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
-
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -248,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_HOTTREND, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_HOT_TREND, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Document document = Jsoup.parse(response);
@@ -264,6 +263,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -341,6 +341,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -421,6 +422,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             try {
                                 luotxem2 = element.getElementsByTag("span").get(1);
                             } catch (Exception ex) {
+                                ex.printStackTrace();
                             }
                             String thumb;
                             String thumb1 = hinhanh.attr("src");
@@ -503,7 +505,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(more);
                 break;
             case R.id.btn_truyenhot:// TODO 18/10/26
-                more.putExtra("url", Link.URL_HOTTREND);
+                more.putExtra("url", Link.URL_HOT_TREND);
                 more.putExtra("title", "Truyện hot");
                 startActivity(more);
                 break;
@@ -530,16 +532,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             requestSearch();
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }
 
     public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     public void requestSearch() {
@@ -575,7 +573,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     lstSearch.add(new Search(name, thumb, link));
                 }
-                adapterSearch = new AdapterSearch(MainActivity.this, R.layout.item_custom_search, lstSearch);
+                adapterSearch = new SearchAdapter(MainActivity.this, R.layout.item_custom_search, lstSearch);
                 mEditAuto.setAdapter(adapterSearch);
                 adapterSearch.notifyDataSetChanged();
             }
@@ -587,12 +585,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     try {
                         String res = new String(response.data,
                                 HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                        JSONObject obj = new JSONObject(res);
+//                        JSONObject obj = new JSONObject(res);
                     } catch (UnsupportedEncodingException e1) {
                         e1.printStackTrace();
-                    } catch (JSONException e2) {
-                        e2.printStackTrace();
                     }
+//                    catch (JSONException e2) {
+//                        e2.printStackTrace();
+//                    }
                 }
             }
         });
