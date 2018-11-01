@@ -7,6 +7,7 @@
     android:gravity="center">
 
     <ImageView
+        android:contentDescription="@string/describeCoverStory"
         android:id="@+id/rootbg"
         android:alpha="0.1"
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
         android:background="@android:color/transparent">
 
         <ImageView
+            android:contentDescription="@string/describeCoverStory"
             android:id="@+id/imgThumb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -40,18 +42,19 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ccccc"
+                android:text="@string/nameComicDetail"
                 android:textColor="#5e6e9b"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ccc"
-                android:textSize="10sp"
+                android:text="@string/descriptionDetail"
+                android:textSize="12sp"
                 android:textColor="#000" />
+
         </LinearLayout>
 
     </LinearLayout>

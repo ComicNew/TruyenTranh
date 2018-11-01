@@ -160,7 +160,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         SharedPreferences pre = getSharedPreferences("sort", MODE_PRIVATE);
         SharedPreferences.Editor editor = pre.edit();
         editor.putInt("sort", i);
-        editor.commit();
+        editor.apply();
     }
 
 

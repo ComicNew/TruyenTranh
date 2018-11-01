@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +8,6 @@
     android:orientation="vertical"
     tools:context=".activity.PageComicActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -26,8 +20,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:background="@android:color/transparent"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.CardView
@@ -36,26 +30,31 @@
                     android:layout_margin="8dp"
                     android:layout_weight="2"
                     app:cardCornerRadius="10dp">
+
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/tv_View">
+
                         <ImageView
                             android:id="@+id/imgThumb"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
+                            android:contentDescription="@string/describeImageView"
                             android:scaleType="fitXY"
                             android:src="@drawable/bgtest" />
+
                         <ImageButton
                             android:id="@+id/btn_Like"
-                            android:src="@drawable/favorite"
-                            android:layout_above="@id/tv_View"
-                            android:background="@drawable/like_click"
-                            android:layout_gravity="bottom|right"
-                            android:baselineAlignBottom="true"
-                            android:layout_marginBottom="@dimen/margin"
-                            android:padding="8dp"
                             android:layout_width="40dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|end"
+                            android:layout_marginBottom="@dimen/margin"
+                            android:background="@drawable/like_click"
+                            android:baselineAlignBottom="true"
+                            android:contentDescription="@string/describeImageView"
+                            android:padding="8dp"
+                            android:src="@drawable/favorite" />
                     </FrameLayout>
 
 
@@ -64,9 +63,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="3"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -75,9 +74,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingLeft="@dimen/margin"
-                        android:paddingRight="@dimen/margin"
                         android:paddingTop="@dimen/margin"
-                        android:text="Tên truyện"
+                        android:paddingRight="@dimen/margin"
+                        android:text="@string/nameComic"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_header"
                         android:textStyle="bold" />
@@ -86,21 +85,21 @@
                         android:id="@+id/tv_Update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_margin="8dp"
-                        android:text="Cập nhật lần cuối"
+                        android:gravity="center"
+                        android:text="@string/updateLast"
                         android:textColor="@color/black"
-                        android:textSize="8sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tvAuthor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/icons_author"
+                        android:layout_marginBottom="@dimen/margin"
+                        android:drawableStart="@drawable/icons_author"
                         android:drawablePadding="@dimen/margin"
                         android:paddingLeft="@dimen/margin"
                         android:paddingRight="@dimen/margin"
-                        android:layout_marginBottom="@dimen/margin"
                         android:text="@string/update"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_normal" />
@@ -108,9 +107,9 @@
                     <TextView
                         android:id="@+id/tvTrangThai"
                         android:layout_width="match_parent"
-                        android:layout_marginBottom="@dimen/margin"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/icons_trend"
+                        android:layout_marginBottom="@dimen/margin"
+                        android:drawableStart="@drawable/icons_trend"
                         android:drawablePadding="@dimen/margin"
                         android:paddingLeft="@dimen/margin"
                         android:paddingRight="@dimen/margin"
@@ -123,9 +122,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin"
-                        android:drawableLeft="@drawable/icon_tag"
+                        android:drawableStart="@drawable/icon_tag"
                         android:drawablePadding="@dimen/margin"
-                        android:gravity="center|left"
+                        android:gravity="center|start"
                         android:paddingLeft="@dimen/margin"
                         android:paddingRight="@dimen/margin"
                         android:text="@string/update"
@@ -136,7 +135,7 @@
                         android:id="@+id/tv_View"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/icons_follow"
+                        android:drawableStart="@drawable/icons_follow"
                         android:drawablePadding="@dimen/margin"
                         android:paddingLeft="@dimen/margin"
                         android:paddingRight="@dimen/margin"
@@ -164,12 +163,12 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:padding="8dp"
-                    android:text="Danh mục truyện"
+                    android:text="@string/categoryComic"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -193,9 +192,8 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvChapter"
-                android:layout_margin="@dimen/margin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin" />
         </android.support.v7.widget.CardView>
     </LinearLayout>
-</LinearLayout>

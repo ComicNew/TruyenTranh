@@ -58,8 +58,8 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        final Comic item = lst.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final Comic item = lst.get(holder.getAdapterPosition());
         holder.tvChapter.setText(item.getChapter());
         holder.tvName.setText(item.getName());
         holder.tvView.setText(item.getView());
@@ -67,7 +67,7 @@ public class ComicFavoriteAdapter extends RecyclerView.Adapter<ComicFavoriteAdap
             @Override
             public void onClick(View view) {
 
-                deleteFromDatabase(item.getName(),position);
+                deleteFromDatabase(item.getName(),holder.getAdapterPosition());
             }
         });
         Glide.with(mContext).load(item.getThumb()).into(holder.thumbnail);

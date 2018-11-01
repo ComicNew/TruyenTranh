@@ -13,6 +13,7 @@
         android:layout_marginRight="6dp"
         android:layout_height="wrap_content">
         <ImageView
+            android:contentDescription="@string/describeImageView"
             android:id="@+id/photo_view"
             android:src="@drawable/wait"
             android:scaleType="fitXY"

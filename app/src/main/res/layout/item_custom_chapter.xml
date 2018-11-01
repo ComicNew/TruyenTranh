@@ -19,7 +19,7 @@
             android:padding="8dp"
             android:textAllCaps="false"
             android:background="@drawable/button_white"
-            android:text="chapter1"
+            android:text="@string/chapterDemo"
             android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>

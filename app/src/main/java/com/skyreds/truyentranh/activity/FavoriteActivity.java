@@ -1,5 +1,6 @@
 package com.skyreds.truyentranh.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -59,7 +60,7 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
     private void initView() {
         lstBXH = new ArrayList<>();
         mFavoriteRv = (RecyclerView) findViewById(R.id.rv_favorite);
-        mNoPost = (LinearLayout) findViewById(R.id.noPost);
+        mNoPost =  findViewById(R.id.noPost);
     }
 
     @Override

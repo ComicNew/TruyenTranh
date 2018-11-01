@@ -1,6 +1,7 @@
 package com.skyreds.truyentranh.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;

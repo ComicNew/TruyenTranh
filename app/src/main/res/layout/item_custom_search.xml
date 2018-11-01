@@ -20,6 +20,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
+                        android:contentDescription="@string/describeCoverStory"
                         android:id="@+id/imgThumb"
                         android:src="@drawable/bgtest"
                         android:scaleType="fitXY"
@@ -30,7 +31,7 @@
                     android:id="@+id/tvName"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:text="Teen truyeenj"
+                    android:text="@string/nameComicDetail"
                     android:textSize="20sp"
                     android:textColor="#000"
                     android:padding="5dp"

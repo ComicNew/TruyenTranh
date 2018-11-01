@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
         <android.support.v7.widget.CardView
             android:id="@+id/cv"
-            android:layout_marginRight="@dimen/padding"
+            android:layout_marginEnd="@dimen/padding"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/margin"
             android:layout_height="wrap_content"
@@ -30,9 +30,9 @@
                 android:background="@android:color/transparent"
                 android:cursorVisible="true"
                 android:maxLines="1"
-                android:drawableRight="@drawable/outline_search_black_36dp"
+                android:drawableEnd="@drawable/outline_search_black_36dp"
                 android:drawableTint="@color/material2"
-                android:hint="Tìm kiếm truyện"
+                android:hint="@string/findComic"
                 android:padding="@dimen/padding"
                 android:textColor="@color/material2"
                 android:textColorHint="@color/material3"
