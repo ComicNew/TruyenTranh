@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
                 android:background="@android:color/transparent"
                 android:cursorVisible="true"
                 android:maxLines="1"

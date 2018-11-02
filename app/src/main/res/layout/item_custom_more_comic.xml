@@ -31,13 +31,13 @@
 
             <TextView
                 android:id="@+id/tvChapter"
+                android:fontFamily="@font/roboto_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border_chapter"
                 android:padding="8sp"
-                android:textStyle="bold"
                 android:text="@string/chapterDemo"
                 android:textColor="#fff"
                 android:textSize="12sp" />
@@ -68,9 +68,9 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:fontFamily="@font/roboto_bold"
                 android:padding="8dp"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:text="@string/nameComicDetail"
                 android:textColor="#000"
                 android:textSize="16sp" />
@@ -83,6 +83,7 @@
                 android:gravity="center|start"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/viewChapter"
                 android:textColor="#FFF"
                 android:textSize="12sp" />

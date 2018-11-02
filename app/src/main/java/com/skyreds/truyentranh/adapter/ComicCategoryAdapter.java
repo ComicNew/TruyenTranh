@@ -68,10 +68,6 @@ public class ComicCategoryAdapter extends RecyclerView.Adapter<ComicCategoryAdap
                 Intent intent = new Intent(mContext, PageComicActivity.class);
                 intent.putExtra("url",item.getUrlBook());
                 mContext.startActivity(intent);
-//                Intent i = new Intent(mContext, DetailActivity.class);
-//                i.putExtra("position",position);
-//                i.putStringArrayListExtra("list",lstLink);
-//                mContext.startActivity(i);
             }
         });
 

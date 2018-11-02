@@ -25,6 +25,7 @@
 
             <TextView
                 android:id="@+id/tvChapter"
+                android:fontFamily="@font/roboto_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -49,6 +50,7 @@
             <TextView
                 android:id="@+id/tv_View"
                 android:layout_width="170dp"
+                android:fontFamily="@font/roboto_medium"
                 android:layout_height="30dp"
                 android:layout_alignParentBottom="true"
                 android:background="@color/edit_text"
@@ -63,6 +65,7 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="match_parent"
+            android:fontFamily="@font/roboto_regular"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="3dp"

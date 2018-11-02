@@ -1,6 +1,7 @@
 package com.skyreds.truyentranh.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.TextView;
 
@@ -46,7 +48,7 @@ public class MoreActivity extends AppCompatActivity {
     private ArrayList<Comic> lstmore;
     private int pos = 0;
     private ArrayList<String> lstUrl;
-    private TextView mTvTitle;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,14 @@ public class MoreActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
         String title = intent.getStringExtra("title");
-        mTvTitle.setText(title);
+        mToolbar.setTitle(title);
+        mToolbar.setTitleTextColor(Color.WHITE);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         loadBXH(url);
 
@@ -70,6 +79,11 @@ public class MoreActivity extends AppCompatActivity {
 
 
         setScrollRV();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void setScrollRV() {
@@ -102,8 +116,7 @@ public class MoreActivity extends AppCompatActivity {
     private void initView() {
         mRvComic = findViewById(R.id.rvComic);
         lstComic = new ArrayList<>();
-        mTvTitle = findViewById(R.id.tvTitle);
-        Toolbar mToolbar = findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         lstmore = new ArrayList<>();
         lstUrl = new ArrayList<>();
     }

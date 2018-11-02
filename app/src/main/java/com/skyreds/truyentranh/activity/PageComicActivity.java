@@ -2,6 +2,7 @@ package com.skyreds.truyentranh.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,6 +71,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
     private TextView mViewTv;
     private Spinner mSpinnerSort;
     private Realm myRealm;
+    private Toolbar mToolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -76,6 +79,14 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_comic);
         initView();
+        mToolbar.setTitle(getString(R.string.infoComic));
+        mToolbar.setTitleTextColor(Color.WHITE);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         myRealm = Realm.getDefaultInstance();
         Intent intent = getIntent();
         URL_COMIC = intent.getStringExtra("url");
@@ -124,6 +135,11 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private void addToDB(String title, String chapter, String thumb, String view, String url) {
 
         boolean check = false;
@@ -140,7 +156,7 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
                 }
         }
 
-        if (!check ) {
+        if (!check) {
             myRealm.beginTransaction();
             ComicDatabase comic = myRealm.createObject(ComicDatabase.class);
             comic.setName(title);
@@ -345,5 +361,6 @@ public class PageComicActivity extends AppCompatActivity implements View.OnClick
         mSpinnerSort = findViewById(R.id.spinnerSort);
         ImageButton mLikeBtn = findViewById(R.id.btn_Like);
         mLikeBtn.setOnClickListener(this);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 }

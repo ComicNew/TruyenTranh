@@ -17,10 +17,10 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
+            android:fontFamily="@font/roboto_bold"
             android:textAllCaps="false"
             android:background="@drawable/button_white"
-            android:text="@string/chapterDemo"
-            android:textStyle="bold" />
+            android:text="@string/chapterDemo"/>
 
     </android.support.v7.widget.CardView>
 

@@ -1,10 +1,13 @@
 package com.skyreds.truyentranh.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -25,6 +28,7 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
     private ArrayList<Comic> lstBXH;
     private RecyclerView mFavoriteRv;
     private LinearLayout mNoPost;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,15 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
         setContentView(R.layout.activity_favorite);
         initView();
 
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
+        mToolbar.setTitle(getString(R.string.favorite));
+        mToolbar.setTitleTextColor(Color.WHITE);
         Realm myRealm = Realm.getDefaultInstance();
         RealmResults<ComicDatabase> results1 =
                 myRealm.where(ComicDatabase.class).findAll();
@@ -41,7 +53,7 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
         }
         if (lstBXH.size() == 0) {
             mNoPost.setVisibility(View.VISIBLE);
-        } else{
+        } else {
             mNoPost.setVisibility(View.GONE);
         }
         ComicFavoriteAdapter adapterBXH = new ComicFavoriteAdapter(FavoriteActivity.this, lstBXH);
@@ -52,10 +64,16 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
         mFavoriteRv.setAdapter(adapterBXH);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private void initView() {
         lstBXH = new ArrayList<>();
         mFavoriteRv = findViewById(R.id.rv_favorite);
-        mNoPost =  findViewById(R.id.noPost);
+        mNoPost = findViewById(R.id.noPost);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
 }

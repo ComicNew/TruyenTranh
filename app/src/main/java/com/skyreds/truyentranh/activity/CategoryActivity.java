@@ -1,11 +1,14 @@
 package com.skyreds.truyentranh.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.AbsListView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -55,14 +58,26 @@ public class CategoryActivity extends AppCompatActivity {
     private ArrayList<Comic> listMore;
     private int pos = 0;
     private ArrayList<String> lstUrl;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         initView();
+
+        mToolbar.setTitle(getString(R.string.categoryComic));
+        mToolbar.setTitleTextColor(Color.WHITE);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         listMore = new ArrayList<>();
         loadCategory();
+
 
         comicAdapter = new LoadmoreAdapter(CategoryActivity.this, lstComic);
         manager = new LinearLayoutManager(CategoryActivity.this);
@@ -81,6 +96,11 @@ public class CategoryActivity extends AppCompatActivity {
         });
 
         setScrollRV();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void setScrollRV() {
@@ -117,6 +137,7 @@ public class CategoryActivity extends AppCompatActivity {
         lstName = new ArrayList<>();
         mUiViewPicker = findViewById(R.id.picker_ui_view);
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
     private void loadBook(final String url) {

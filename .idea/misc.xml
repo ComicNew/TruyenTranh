@@ -1,198 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="EntryPointsManager">
-    <entry_points version="2.0">
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity KindAdapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter name" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.until.Link URL_KIND" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.MyFirebaseMessageService notifyID" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity content" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Banner name" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Banner thumb" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Category content" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter lst" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter mContext" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Chapter name" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ChapterAdapter lst" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder rootbg" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder thumbnail" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder tvDesc" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder tvName" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter myRealm" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.MyFirebaseMessageService notificationBuilder" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity adapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder btn_Delete" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder btnFavorite" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity comicAdapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity.SavedState CREATOR" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity listMore" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity lstChapNormal" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity lstChapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity lstComic" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity lstName" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity lstTheLoai" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity lstUrl" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity manager" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ChapterAdapter mContext" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mImgThumb" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mRvChapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity mRvComic" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mSpinnerSort" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mTvAuthor" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mTvName" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mTvTheLoai" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mTvTrangThai" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.CategoryActivity mUiViewPicker" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mUpdateTv" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity mViewTv" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity myRealm" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Category name" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Kind name" />
-      <entry_point TYPE="method" FQNAME="com.skyreds.truyentranh.activity.MainActivity$19 void onErrorResponse(com.android.volley.VolleyError error)" />
-      <entry_point TYPE="method" FQNAME="com.skyreds.truyentranh.activity.TopActivity$3$2 void onErrorResponse(com.android.volley.VolleyError error)" />
-      <entry_point TYPE="method" FQNAME="com.skyreds.truyentranh.activity.TopActivity$3 void run()" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Category thumb" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder thumbnail" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder thumbnail" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder tvChapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder tvChapter" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder tvName" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder tvName" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder tvView" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder tvView" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Chapter url" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Kind url" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.activity.PageComicActivity URL_COMIC" />
-      <entry_point TYPE="field" FQNAME="com.skyreds.truyentranh.model.Category urlBook" />
-    </entry_points>
-    <pattern value="com.skyreds.truyentranh.model.Banner" method="Banner" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="Category" />
-    <pattern value="com.skyreds.truyentranh.model.Chapter" method="setName" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="setLinkComic" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" method="ComicCategoryAdapter" />
-    <pattern value="com.skyreds.truyentranh.model.Image" method="setUrl" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" method="getName" />
-    <pattern value="com.skyreds.truyentranh.model.Banner" />
-    <pattern value="com.skyreds.truyentranh.model.Banner" method="getName" />
-    <pattern value="com.skyreds.truyentranh.model.Banner" method="getThumb" />
-    <pattern value="com.skyreds.truyentranh.model.Banner" method="setName" />
-    <pattern value="com.skyreds.truyentranh.model.Banner" method="setThumb" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" method="onCreate" />
-    <pattern value="com.skyreds.truyentranh.model.Chapter" method="Chapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ChapterAdapter" method="ChapterAdapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" method="getItemCount" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" method="onBindViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter" method="onCreateViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicCategoryAdapter.ViewHolder" method="ViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="getItemCount" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="onBindViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="onCreateViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter" method="getItemCount" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter" method="onBindViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter" method="onCreateViewHolder" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" method="getUrl" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="setChapter" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="setName" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="setThumb" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="setView" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="onCreate" />
-    <pattern value="com.skyreds.truyentranh.model.Search" method="setName" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="getContent" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" method="initView" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="deleteFromDatabase" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" method="setName" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="initView" />
-    <pattern value="com.skyreds.truyentranh.model.Search" method="setUrl" />
-    <pattern value="com.skyreds.truyentranh.ExampleUnitTest" method="addition_isCorrect" />
-    <pattern value="com.skyreds.truyentranh.model.Category" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" />
-    <pattern value="com.skyreds.truyentranh.model.Chapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ChapterAdapter" />
-    <pattern value="com.skyreds.truyentranh.model.Comic" method="Comic" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="ComicFavoriteAdapter" />
-    <pattern value="com.skyreds.truyentranh.activity.DetailComicActivity" />
-    <pattern value="com.skyreds.truyentranh.ExampleInstrumentedTest" />
-    <pattern value="com.skyreds.truyentranh.ExampleUnitTest" />
-    <pattern value="com.skyreds.truyentranh.activity.FavoriteActivity" />
-    <pattern value="com.skyreds.truyentranh.FbInstanceIdService" />
-    <pattern value="com.skyreds.truyentranh.adapter.ChapterAdapter" method="getItemCount" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="getName" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="getThumb" />
-    <pattern value="com.skyreds.truyentranh.model.Chapter" method="getUrl" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="getUrlBook" />
-    <pattern value="com.skyreds.truyentranh.model.Image" />
-    <pattern value="com.skyreds.truyentranh.activity.MainActivity" />
-    <pattern value="com.skyreds.truyentranh.activity.MoreActivity" />
-    <pattern value="com.skyreds.truyentranh.MyFirebaseMessageService" />
-    <pattern value="com.skyreds.truyentranh.activity.StartActivity" />
-    <pattern value="com.skyreds.truyentranh.activity.TopActivity" />
-    <pattern value="com.skyreds.truyentranh.activity.MoreActivity" method="initView" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" method="Kind" />
-    <pattern value="com.skyreds.truyentranh.until.Link" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" method="loadBook" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="loadBook" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" method="loadCategory" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter" method="LoadmoreAdapter" />
-    <pattern value="com.skyreds.truyentranh.adapter.ChapterAdapter" method="onBindViewHolder" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="onClick" />
-    <pattern value="com.skyreds.truyentranh.adapter.ChapterAdapter" method="onCreateViewHolder" />
-    <pattern value="com.skyreds.truyentranh.MyFirebaseMessageService" method="onMessageReceived" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter" method="removerItem" />
-    <pattern value="com.skyreds.truyentranh.activity.MainActivity" method="requestSearch" />
-    <pattern value="com.skyreds.truyentranh.activity.TopActivity" method="requestSearch" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="restoringPreferences" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity.SavedState" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity.SavedState" method="SavedState" />
-    <pattern value="com.skyreds.truyentranh.activity.PageComicActivity" method="savingPreferences" />
-    <pattern value="com.skyreds.truyentranh.model.Search" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="setContent" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="setName" />
-    <pattern value="com.skyreds.truyentranh.activity.CategoryActivity" method="setScrollRV" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="setThumb" />
-    <pattern value="com.skyreds.truyentranh.model.Search" method="setThumb" />
-    <pattern value="com.skyreds.truyentranh.model.Chapter" method="setUrl" />
-    <pattern value="com.skyreds.truyentranh.model.Kind" method="setUrl" />
-    <pattern value="com.skyreds.truyentranh.model.Category" method="setUrlBook" />
-    <pattern value="com.skyreds.truyentranh.fragment.TopMonthFragment" />
-    <pattern value="com.skyreds.truyentranh.fragment.TopMonthFragment" method="TopMonthFragment" />
-    <pattern value="com.skyreds.truyentranh.ExampleInstrumentedTest" method="useAppContext" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.ComicFavoriteAdapter.ViewHolder" method="ViewHolder" />
-    <pattern value="com.skyreds.truyentranh.adapter.LoadmoreAdapter.ViewHolder" method="ViewHolder" />
-  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="7">
+        <list size="5">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
           <item index="3" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
           <item index="4" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
-          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
-          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="6">
+        <list size="4">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
           <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
-          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
-          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
         </list>
       </value>
     </option>
