@@ -313,85 +313,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).start();
     }
 
-    private void loadComicBoy() {
-        lstBoy.clear();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_BOY, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Document document = Jsoup.parse(response);
-                        Elements all = document.select("div#ctl00_divCenter");
-                        Elements sub = all.select(".item");
-                        for (Element element : sub) {
-                            Element hinhanh = element.getElementsByTag("img").get(0);
-                            Element linktruyen = element.getElementsByTag("a").get(0);
-                            Element sochuong = element.getElementsByTag("a").get(2);
-                            Element tentruyen = element.getElementsByTag("h3").get(0);
-                            Element luotxem = element.getElementsByTag("span").get(0);
-                            Element luotxem2 = null;
-                            try {
-                                luotxem2 = element.getElementsByTag("span").get(1);
-                            } catch (Exception ex) {
-                                ex.printStackTrace();
-                            }
-                            String thumb;
-                            String thumb1 = hinhanh.attr("src");
-                            String thumb2 = hinhanh.attr("data-original");
-                            if (thumb2.equals("")) {
-                                thumb = thumb1;
-                            } else {
-                                thumb = thumb2;
-                            }
-                            String name = tentruyen.text();
-                            String link = linktruyen.attr("href");
-                            String view;
-                            if (luotxem.text().equals("")) {
-                                view = luotxem2.text();
-                            } else {
-                                view = luotxem.text();
-                            }
-                            String string = view;
-                            String[] parts = string.split(" ");
-                            String viewCount = parts[0];
-                            if (thumb.startsWith("http:") || thumb.startsWith("https:")) {
-                            } else {
-                                thumb = "http:" + thumb;
-                            }
-                            String chapter = sochuong.text();
-                            lstBoy.add(new Comic(name, viewCount, thumb, chapter, link));
-                        }
-                        rv_Boy.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstBoy);
-                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                                rv_Boy.setLayoutManager(horizontalLayout);
-                                rv_Boy.setHasFixedSize(true);
-                                rv_Boy.setItemAnimator(new DefaultItemAnimator());
-                                rv_Boy.setAdapter(newUpdateAdapter);
-                                rv_Boy.hideShimmerAdapter();
-                            }
-                        });
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                });
-                stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                        150000,
-                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                requestQueue.add(stringRequest);
-
-            }
-        }).start();
-
-    }
-
     private void loadComicGirl() {
         lstGirl.clear();
         new Thread(new Runnable() {
@@ -471,6 +392,87 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }).start();
     }
+
+    private void loadComicBoy() {
+        lstBoy.clear();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Link.URL_BOY, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Document document = Jsoup.parse(response);
+                        Elements all = document.select("div#ctl00_divCenter");
+                        Elements sub = all.select(".item");
+                        for (Element element : sub) {
+                            Element hinhanh = element.getElementsByTag("img").get(0);
+                            Element linktruyen = element.getElementsByTag("a").get(0);
+                            Element sochuong = element.getElementsByTag("a").get(2);
+                            Element tentruyen = element.getElementsByTag("h3").get(0);
+                            Element luotxem = element.getElementsByTag("span").get(0);
+                            Element luotxem2 = null;
+                            try {
+                                luotxem2 = element.getElementsByTag("span").get(1);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                            String thumb;
+                            String thumb1 = hinhanh.attr("src");
+                            String thumb2 = hinhanh.attr("data-original");
+                            if (thumb2.equals("")) {
+                                thumb = thumb1;
+                            } else {
+                                thumb = thumb2;
+                            }
+                            String name = tentruyen.text();
+                            String link = linktruyen.attr("href");
+                            String view;
+                            if (luotxem.text().equals("")) {
+                                view = luotxem2.text();
+                            } else {
+                                view = luotxem.text();
+                            }
+                            String string = view;
+                            String[] parts = string.split(" ");
+                            String viewCount = parts[0];
+                            if (thumb.startsWith("http:") || thumb.startsWith("https:")) {
+                            } else {
+                                thumb = "http:" + thumb;
+                            }
+                            String chapter = sochuong.text();
+                            lstBoy.add(new Comic(name, viewCount, thumb, chapter, link));
+                        }
+                        rv_Boy.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                newUpdateAdapter = new ComicAdapter(MainActivity.this, lstBoy);
+                                LinearLayoutManager horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                                rv_Boy.setLayoutManager(horizontalLayout);
+                                rv_Boy.setHasFixedSize(true);
+                                rv_Boy.setItemAnimator(new DefaultItemAnimator());
+                                rv_Boy.setAdapter(newUpdateAdapter);
+                                rv_Boy.hideShimmerAdapter();
+                            }
+                        });
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+                stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        150000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                requestQueue.add(stringRequest);
+
+            }
+        }).start();
+
+    }
+
+
 
 
     @Override
