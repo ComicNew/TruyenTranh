@@ -5,7 +5,9 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.crashlytics.android.Crashlytics;
 import com.skyreds.truyentranh.R;
+import io.fabric.sdk.android.Fabric;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -13,7 +15,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_start);
 
         new CountDownTimer(1000, 1000) {

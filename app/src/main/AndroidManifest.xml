@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.PageComicActivity" />
@@ -44,6 +45,12 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="acf68a622cc92be49e5d542d2e54db1d3bd54794" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="acf68a622cc92be49e5d542d2e54db1d3bd54794" />
     </application>
 
 </manifest>
